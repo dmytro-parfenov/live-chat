@@ -8,7 +8,7 @@
     db_copy/                actual copy of database
     public
         bower_components/   bower components
-        frontend/           compiled scripts, compiled styles, fonts, images for frontend
+        frontend/           compiled scripts, compiled styles, fonts, images, sounds for frontend
         bower.json          list of bower components
         .htaccess           htaccess setings
         robots.txt          robots config

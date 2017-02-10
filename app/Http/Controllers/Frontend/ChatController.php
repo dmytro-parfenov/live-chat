@@ -20,7 +20,7 @@ class ChatController extends BaseController{
 
         $messages = Message::all();
 
-        if (!empty($messages)) {
+        if (count($messages) > 0) {
             Session::put('last_message_id', $messages->last()->id);
         }
 
@@ -31,7 +31,7 @@ class ChatController extends BaseController{
 
         $user_name = $request->get('user_name');
 
-        if (!empty($user_name)) {
+        if ($user_name !== '') {
             Cookie::queue('user_name', $user_name);
             Cookie::queue('user_id', time());
         }
@@ -46,22 +46,27 @@ class ChatController extends BaseController{
         $user_name = Cookie::get('user_name');
         $user_id = Cookie::get('user_id');
 
-        if (!empty($message) && !empty($user_name) && !empty($user_id)) {
+        if ($message !== '' && !empty($user_name) && !empty($user_id)) {
             Message::create( ['user_id' => $user_id, 'user_name' => $user_name, 'message' => $message] );
             return 1;
         }
 
     }
 
-    public function subscribeMessage(Request $request){
+    public function subscribeMessage(Request $request)
+    {
 
-        $last_message_id = Session::get('last_message_id');
+        if (Session::has('last_message_id')) {
+            $last_message_id = Session::get('last_message_id');
 
-        $messages = Message::where('id', '>', $last_message_id)->get();
+            $messages = Message::where('id', '>', $last_message_id)->get();
 
-        if (!empty($messages)) {
-            $html = view('frontend.includes.messages', compact(['messages']))->render();
-            return 1;
+            if (count($messages) > 0) {
+                Session::put('last_message_id', $messages->last()->id);
+                $html = view('frontend.includes.messages', compact(['messages']))->render();
+                $user_id = Cookie::get('user_id');
+                return ['html' => $html, 'messages' => $messages, 'user_id' => $user_id];
+            }
         }
 
     }

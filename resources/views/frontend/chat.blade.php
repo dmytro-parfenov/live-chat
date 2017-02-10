@@ -14,7 +14,9 @@
                 </div>
             @endforeach
         @else
-            <div class="no-messages">no messages</div>
+            <div class="message-block">
+                <div class="no-messages">no messages</div>
+            </div>
         @endif
     </div>
 
