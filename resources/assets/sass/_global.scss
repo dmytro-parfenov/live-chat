@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+@mixin opacity ($value){
+    -moz-opacity: $value;
+    -khtml-opacity: $value;
+    opacity: $value;
+}
+
+@mixin shadowOutline ($size1, $size2, $size3, $size4, $color){
+    -webkit-box-shadow: $size1 $size2 $size3 $size4 $color;
+    -moz-box-shadow: $size1 $size2 $size3 $size4 $color;
+    box-shadow: $size1 $size2 $size3 $size4 $color;
+}
+
+@mixin transition($value){
+    -webkit-transition: all $value+s;
+    -moz-transition: all $value+s;
+    -o-transition: all $value+s;
+    transition: all $value+s;
+}

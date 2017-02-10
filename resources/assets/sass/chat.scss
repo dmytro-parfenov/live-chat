@@ -1,0 +1,44 @@
+@import 'global';
+
+.no-messages {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #999999;
+}
+
+.messages-container {
+    margin-top: 75px;
+    margin-bottom: 80px;
+    .message-block {
+        @include shadowOutline(0px, 0px, 4px, 0px, rgba(153,153,153,1));
+        margin-bottom: 15px;
+        padding: 15px;
+    }
+    .message-blok-top{
+        position: relative;
+        margin-bottom: 15px;
+        .name {
+            font-size: 18px;
+            color: #000000;
+        }
+        .time {
+            color: #999999;
+            font-size: 11px;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+    .message-block-bottom {
+        font-size: 14px;
+        color: #000000;
+    }
+}
+
+@media screen and (max-width:767px){
+    .messages-container {
+        margin-bottom: 145px;
+    }
+}
