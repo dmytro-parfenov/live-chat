@@ -1,4 +1,4 @@
-//function
+//functions
 function sendMessage() {
     var message = $('.send-message-container input').val();
     var token = $('.send-message-container input').data('token');
@@ -12,6 +12,23 @@ function sendMessage() {
                 }
             });
     }
+}
+function subscribe() {
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+        if (this.readyState != 4) return;
+
+        if (this.status == 200) {
+            console.log(this.responseText);
+        } else {
+            console.log('error');
+        }
+
+        subscribe();
+    };
+    xhr.open("GET", '/subscribe-message', true);
+    xhr.send();
 }
 
 $(document).ready(function(){
@@ -41,5 +58,6 @@ $(document).ready(function(){
 $(window).on('load', function(){
 
     $("html, body").animate({ scrollTop: $(document).height() }, 500);
+    subscribe();
 
 });

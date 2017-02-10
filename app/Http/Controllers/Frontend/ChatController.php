@@ -20,6 +20,10 @@ class ChatController extends BaseController{
 
         $messages = Message::all();
 
+        if (!empty($messages)) {
+            Session::put('last_message_id', $messages->last()->id);
+        }
+
         return view('frontend.chat', compact(['messages', 'user_name', 'user_id']));
     }
 
@@ -44,6 +48,19 @@ class ChatController extends BaseController{
 
         if (!empty($message) && !empty($user_name) && !empty($user_id)) {
             Message::create( ['user_id' => $user_id, 'user_name' => $user_name, 'message' => $message] );
+            return 1;
+        }
+
+    }
+
+    public function subscribeMessage(Request $request){
+
+        $last_message_id = Session::get('last_message_id');
+
+        $messages = Message::where('id', '>', $last_message_id)->get();
+
+        if (!empty($messages)) {
+            $html = view('frontend.includes.messages', compact(['messages']))->render();
             return 1;
         }
 
