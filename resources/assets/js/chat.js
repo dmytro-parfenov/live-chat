@@ -27,43 +27,6 @@ function sendNotification(title, options) {
         });
     }
 }
-function subscribe() {
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if (this.readyState != 4) return;
-
-        if (this.status == 200) {
-            if (this.responseText.length > 0) {
-                $("html, body").animate({ scrollTop: $(document).height() }, 500);
-                response = jQuery.parseJSON(this.responseText);
-                $('.message-block').last().after(response.html);
-                $('.message-block').last().hide();
-                $('.message-block').last().fadeIn(500);
-                for (i = 0; i < response.messages.length; i++) {
-                    if (response.user_id !== null) {
-                        if (response.user_id !== response.messages[i].user_id) {
-                            sendNotification(response.messages[i].user_name, {
-                                body: response.messages[i].message,
-                                icon: 'favicon.ico',
-                                dir: 'auto'
-                            });
-                        }
-                    } else {
-                        sendNotification(response.messages[i].user_name, {
-                            body: response.messages[i].message,
-                            icon: 'favicon.ico',
-                            dir: 'auto'
-                        });
-                    }
-                }
-            }
-        }
-
-        subscribe();
-    };
-    xhr.open("GET", '/subscribe-message', true);
-    xhr.send();
-}
 
 $(document).ready(function(){
 
@@ -77,6 +40,31 @@ $(window).on('load', function(){
         console.log('Your browser does not support HTML5 Notifications');
     }
 
-    subscribe();
+    var pusher = new Pusher('5ccc3f2a7680d594a7dc', {
+        encrypted: true
+    });
+
+    var channel = pusher.subscribe('new-message-channel');
+    channel.bind('new-message-event', function(data) {
+        $("html, body").animate({ scrollTop: $(document).height() }, 500);
+        $('.message-block').last().after(data.html);
+        $('.message-block').last().hide();
+        $('.message-block').last().fadeIn(500);
+        if (data.user_id_login !== null) {
+            if (data.user_id_login !== data.user_id) {
+                sendNotification(data.user_name, {
+                    body: data.message,
+                    icon: 'favicon.ico',
+                    dir: 'auto'
+                });
+            }
+        } else {
+            sendNotification(data.user_name, {
+                body: data.message,
+                icon: 'favicon.ico',
+                dir: 'auto'
+            });
+        }
+    });
 
 });

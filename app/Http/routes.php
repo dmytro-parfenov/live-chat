@@ -15,4 +15,3 @@ Route::post('/send-user-name', 'Frontend\ChatController@sendUserName');
 Route::post('/send-message', 'Frontend\ChatController@sendMessage');
 
 Route::get('/', 'Frontend\ChatController@index');
-Route::get('/subscribe-message', 'Frontend\ChatController@subscribeMessage');

@@ -4,12 +4,8 @@ function sendMessage() {
     var token = $('.send-message-container input').data('token');
     if (message.length > 0 ) {
         $.post('/send-message', {_token: token, message: message },
-            function(data){
-                if (data) {
-                    $('.send-message-container input').val('');
-                } else {
-                    alert('Error');
-                }
+            function(){
+                $('.send-message-container input').val('');
             });
     }
 }

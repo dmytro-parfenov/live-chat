@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Frontend\BaseController;
 use App\Models\Message;
 
-use Session;
+use Pusher;
 use Cookie;
 
 class ChatController extends BaseController{
@@ -19,10 +20,6 @@ class ChatController extends BaseController{
         $user_id = Cookie::get('user_id');
 
         $messages = Message::all();
-
-        if (count($messages) > 0) {
-            Session::put('last_message_id', $messages->last()->id);
-        }
 
         return view('frontend.chat', compact(['messages', 'user_name', 'user_id']));
     }
@@ -47,26 +44,28 @@ class ChatController extends BaseController{
         $user_id = Cookie::get('user_id');
 
         if ($message !== '' && !empty($user_name) && !empty($user_id)) {
-            Message::create( ['user_id' => $user_id, 'user_name' => $user_name, 'message' => $message] );
-            return 1;
-        }
 
-    }
+            $message = Message::create( ['user_id' => $user_id, 'user_name' => $user_name, 'message' => $message] );
+            $message->created_at = Carbon::now()->toDateTimeString();
 
-    public function subscribeMessage(Request $request)
-    {
+            $options = array(
+                'encrypted' => true
+            );
+            $pusher = new Pusher(
+                '5ccc3f2a7680d594a7dc',
+                '06268cdae70c1f039eb5',
+                '301741',
+                $options
+            );
 
-        if (Session::has('last_message_id')) {
-            $last_message_id = Session::get('last_message_id');
+            $html = view('frontend.includes.message', compact(['message']))->render();
+            $message->html = $html;
 
-            $messages = Message::where('id', '>', $last_message_id)->get();
+            $user_id_login = Cookie::get('user_id');
+            $message->user_id_login = $user_id_login;
 
-            if (count($messages) > 0) {
-                Session::put('last_message_id', $messages->last()->id);
-                $html = view('frontend.includes.messages', compact(['messages']))->render();
-                $user_id = Cookie::get('user_id');
-                return ['html' => $html, 'messages' => $messages, 'user_id' => $user_id];
-            }
+            $pusher->trigger('new-message-channel', 'new-message-event', $message);
+
         }
 
     }

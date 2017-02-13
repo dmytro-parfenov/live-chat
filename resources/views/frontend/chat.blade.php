@@ -28,5 +28,6 @@
 @endpush
 
 @push('script')
+<script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 <script type="text/javascript" src="/frontend/js/chat.min.js"></script>
 @endpush
