@@ -61,12 +61,17 @@ class ChatController extends BaseController{
             $html = view('frontend.includes.message', compact(['message']))->render();
             $message->html = $html;
 
-            $user_id_login = Cookie::get('user_id');
-            $message->user_id_login = $user_id_login;
-
             $pusher->trigger('new-message-channel', 'new-message-event', $message);
 
         }
+
+    }
+
+    public function getCookieUserId(){
+
+        $user_id_login = Cookie::get('user_id');
+
+        return $user_id_login;
 
     }
 

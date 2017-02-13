@@ -3,10 +3,15 @@ function sendMessage() {
     var message = $('.send-message-container input').val();
     var token = $('.send-message-container input').data('token');
     if (message.length > 0 ) {
-        $.post('/send-message', {_token: token, message: message },
-            function(){
+        $.ajax({
+            type: "POST",
+            url: "/send-message",
+            data: { _token: token,
+                    message: message},
+            success: function(){
                 $('.send-message-container input').val('');
-            });
+            }
+        });
     }
 }
 

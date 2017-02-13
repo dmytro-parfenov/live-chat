@@ -14,4 +14,5 @@
 Route::post('/send-user-name', 'Frontend\ChatController@sendUserName');
 Route::post('/send-message', 'Frontend\ChatController@sendMessage');
 
+Route::get('/get-cookie-user-id', 'Frontend\ChatController@getCookieUserId');
 Route::get('/', 'Frontend\ChatController@index');

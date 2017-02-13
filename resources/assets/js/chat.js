@@ -50,21 +50,23 @@ $(window).on('load', function(){
         $('.message-block').last().after(data.html);
         $('.message-block').last().hide();
         $('.message-block').last().fadeIn(500);
-        if (data.user_id_login !== null) {
-            if (data.user_id_login !== data.user_id) {
-                sendNotification(data.user_name, {
-                    body: data.message,
-                    icon: 'favicon.ico',
-                    dir: 'auto'
-                });
+        $('div.notification').text('awdawda');
+
+        $.ajax({
+            type: "GET",
+            url: "/get-cookie-user-id",
+            success: function(response){
+                response = parseInt(response);
+                if (response !== data.user_id) {
+                    sendNotification(data.user_name, {
+                        body: data.message,
+                        icon: 'favicon.ico',
+                        dir: 'auto'
+                    });
+                }
             }
-        } else {
-            sendNotification(data.user_name, {
-                body: data.message,
-                icon: 'favicon.ico',
-                dir: 'auto'
-            });
-        }
+        });
+
     });
 
 });
