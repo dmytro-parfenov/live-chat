@@ -4,8 +4,8 @@
 
     app/                    models,controllers, requests, etc.
     config
-        app.php             connecting providers, aliases
-    db_copy/                actual copy of database
+        app.php             connecting providers, aliases and other settings of app
+    db_copy/                actual copy structure of database
     public
         bower_components/   bower components
         frontend/           compiled scripts, compiled styles, fonts, images, sounds for frontend
@@ -24,7 +24,7 @@
     
 `Launch project`
 
-`You must execute command "npm install" for download package.json dependencies. Next open gulpfile.js and write a name of your domain in field "proxy". Exucute command "gulp start" to start.`
+`You must execute commands "npm install" and "composer install" for download package.json and composer.json dependencies. Next open gulpfile.js and write a name of your domain in field "proxy". Exucute command "gulp start" to start.`
 
 `Notes:`
 
