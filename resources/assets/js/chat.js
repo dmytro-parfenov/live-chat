@@ -1,28 +1,25 @@
 // functions
+/*function soundNotification() {
+    var audio = new Audio();
+    audio.src = 'frontend/sounds/notification.mp3';
+    audio.autoplay = true;
+}*/
 function sendNotification(title, options) {
     function clickFunc() {
         window.focus();
         this.close();
     }
-    function soundNotification() {
-        var audio = new Audio();
-        audio.src = 'frontend/sounds/notification.mp3';
-        audio.autoplay = true;
-    }
-
     // check rights for notifications
     if (Notification.permission === "granted") {
         // send notification
         var notification = new Notification(title, options);
         notification.onclick = clickFunc;
-        soundNotification();
     } else if (Notification.permission !== 'denied') {
         Notification.requestPermission(function (permission) {
             // send notification
             if (permission === "granted") {
                 var notification = new Notification(title, options);
                 notification.onclick = clickFunc;
-                soundNotification();
             }
         });
     }
@@ -50,7 +47,6 @@ $(window).on('load', function(){
         $('.message-block').last().after(data.html);
         $('.message-block').last().hide();
         $('.message-block').last().fadeIn(500);
-        $('div.notification').text('awdawda');
 
         $.ajax({
             type: "GET",
@@ -58,6 +54,7 @@ $(window).on('load', function(){
             success: function(response){
                 response = parseInt(response);
                 if (response !== data.user_id) {
+                    soundNotification('frontend/sounds/get-message.wav');
                     sendNotification(data.user_name, {
                         body: data.message,
                         icon: 'favicon.ico',

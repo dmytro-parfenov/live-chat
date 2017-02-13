@@ -62,8 +62,8 @@ body {
 .send-message-container {
     display: none;
     background:  #63B8FF;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -71,31 +71,34 @@ body {
     @include shadowOutline(0px, -2px, 5px, 0px, rgba(153,153,153,1));
     input[type=text] {
         font-size: 14px;
-        color: #000000;
-        width: 100%;
-        border: 0;
-        outline: none;
-        padding: 15px;
-        border: 1px solid #ffffff;
-    }
-    button {
-        font-size: 14px;
-        padding: 15px;
-        text-transform: uppercase;
-        background: transparent;
-        border: 1px solid #ffffff;
         color: #ffffff;
         width: 100%;
         outline: none;
-        @include transition(0.2);
-        &:hover {
-            background: #ffffff;
-            color: #63B8FF;
-        }
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border: 0;
+        background: transparent;
+        border-bottom: 1px solid #ffffff;
     }
-    @media screen and (max-width:767px){
+    ::-webkit-input-placeholder {color:#ffffff;}
+    ::-moz-placeholder          {color:#ffffff;}
+    :-moz-placeholder           {color:#ffffff;}
+    :-ms-input-placeholder      {color:#ffffff;}
+    .send-message-button{
+        text-align: center;
         button {
-            margin-top: 15px;
+            font-size: 14px;
+            padding: 15px;
+            background: transparent;
+            color: #ffffff;
+            outline: none;
+            border: 0;
+            border-radius: 50px;
+            @include transition(0.2);
+            &:hover {
+                background: #ffffff;
+                color: #63B8FF;
+            }
         }
     }
 }

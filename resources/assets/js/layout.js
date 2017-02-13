@@ -1,4 +1,9 @@
 //functions
+function soundNotification(url) {
+    var audio = new Audio();
+    audio.src = url;
+    audio.autoplay = true;
+}
 function sendMessage() {
     var message = $('.send-message-container input').val();
     var token = $('.send-message-container input').data('token');
@@ -10,6 +15,7 @@ function sendMessage() {
                     message: message},
             success: function(){
                 $('.send-message-container input').val('');
+                soundNotification('frontend/sounds/send-message.wav');
             }
         });
     }

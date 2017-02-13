@@ -30,7 +30,3 @@
   .messages-container .message-block-bottom {
     font-size: 14px;
     color: #000000; }
-
-@media screen and (max-width: 767px) {
-  .messages-container {
-    margin-bottom: 145px; } }

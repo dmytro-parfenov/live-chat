@@ -21,7 +21,7 @@
                 @endif
                 <form class="get-user-name col-xs-6 @if (empty($user_name) || empty($user_id)) get-user-name-active @endif" method="POST" action="/send-user-name">
                     {!! csrf_field() !!}
-                    <input type="text" placeholder="Enter your name for chatting" name="user_name" maxlength="10">
+                    <input type="text" placeholder="Enter your name" name="user_name" maxlength="10">
                 </form>
             </div>
         </div>
@@ -32,17 +32,15 @@
     <div class="send-message-container @if (!empty($user_name) && !empty($user_id)) send-message-container-active @endif">
         <div class="content-container">
             <div class="row">
-                <div class="col-xs-12 col-sm-8 col-md-10">
+                <div class="col-xs-9 col-sm-10 col-md-11">
                     <input type="text" placeholder="Enter your message" name="message" autocomplete="off" data-token="{{ csrf_token() }}">
                 </div>
-                <div class="col-xs-12 col-sm-4 col-md-2">
-                    <button>send</button>
+                <div class="col-xs-3 col-sm-2 col-md-1 send-message-button">
+                    <button class="glyphicon glyphicon-ok" data-toggle="tooltip" data-placement="top" title="Send"></button>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="notification"></div>
 
     <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
