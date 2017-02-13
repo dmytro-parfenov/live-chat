@@ -86,6 +86,7 @@ body {
         border: 1px solid #ffffff;
         color: #ffffff;
         width: 100%;
+        outline: none;
         @include transition(0.2);
         &:hover {
             background: #ffffff;

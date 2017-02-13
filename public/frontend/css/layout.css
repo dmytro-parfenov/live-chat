@@ -83,6 +83,7 @@ body {
     border: 1px solid #ffffff;
     color: #ffffff;
     width: 100%;
+    outline: none;
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
     -o-transition: all 0.2s;
