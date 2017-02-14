@@ -25,6 +25,10 @@
                 </form>
             </div>
         </div>
+        <form class="search-form col-xs-12">
+            {!! csrf_field() !!}
+            <div><input type="search" placeholder="Search" name="search_value" autocomplete="off" required></div>
+        </form>
     </div>
 
     <div class="search glyphicon glyphicon-search" data-toggle="tooltip" data-placement="bottom" title="Search"></div>

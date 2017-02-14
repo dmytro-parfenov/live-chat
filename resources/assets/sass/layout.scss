@@ -77,6 +77,30 @@ body {
     .get-user-name-active {
         display: block;
     }
+    .search-form {
+        position: fixed;
+        margin-top: 15px;
+        display: none;
+        div{
+            background: #63B8FF;
+            padding: 10px;
+            @include shadowOutline(0px, 2px, 5px, 0px, rgba(153,153,153,1));
+            input[type=search] {
+                font-size: 14px;
+                width: 100%;
+                background: transparent;
+                border: 0;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #ffffff;
+                color: #ffffff;
+                outline: none;
+            }
+            ::-webkit-input-placeholder {color:#ffffff;}
+            ::-moz-placeholder          {color:#ffffff;}
+            :-moz-placeholder           {color:#ffffff;}
+            :-ms-input-placeholder      {color:#ffffff;}
+        }
+    }
 }
 
 .search {
