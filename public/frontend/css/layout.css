@@ -19,11 +19,12 @@ body {
   -webkit-box-shadow: 0px 2px 5px 0px #999999;
   -moz-box-shadow: 0px 2px 5px 0px #999999;
   box-shadow: 0px 2px 5px 0px #999999; }
-  .header .site-name {
-    color: #ffffff;
+  .header .site-name a {
     font-weight: bold;
     font-size: 20px;
-    white-space: nowrap; }
+    white-space: nowrap;
+    color: #ffffff;
+    text-decoration: none; }
   .header .user-name {
     font-size: 15px;
     color: #ffffff;

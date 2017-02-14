@@ -21,10 +21,13 @@ body {
     z-index: 100;
     @include shadowOutline(0px, 2px, 5px, 0px, rgba(153,153,153,1));
     .site-name {
-        color: #ffffff;
-        font-weight: bold;
-        font-size: 20px;
-        white-space: nowrap;
+        a {
+            font-weight: bold;
+            font-size: 20px;
+            white-space: nowrap;
+            color: #ffffff;
+            text-decoration: none;
+        }
     }
     .user-name {
         font-size: 15px;

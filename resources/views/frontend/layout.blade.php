@@ -15,13 +15,13 @@
     <div class="header">
         <div class="content-container">
             <div class="row">
-                <div class="site-name col-xs-6">Live chat</div>
+                <div class="site-name col-xs-6"><a href="/">Live chat</a></div>
                 @if (!empty($user_name) && !empty($user_id))
                     <div class="user-name col-xs-6"><span data-toggle="tooltip" data-placement="bottom" title="Edit name">{{$user_name}}</span></div>
                 @endif
                 <form class="get-user-name col-xs-6 @if (empty($user_name) || empty($user_id)) get-user-name-active @endif" method="POST" action="/send-user-name">
                     {!! csrf_field() !!}
-                    <input type="text" placeholder="Enter your name" name="user_name" maxlength="10">
+                    <input type="text" placeholder="Enter your name" name="user_name" maxlength="10" autocomplete="off" required>
                 </form>
             </div>
         </div>
