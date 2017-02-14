@@ -1,9 +1,4 @@
 // functions
-/*function soundNotification() {
-    var audio = new Audio();
-    audio.src = 'frontend/sounds/notification.mp3';
-    audio.autoplay = true;
-}*/
 function sendNotification(title, options) {
     function clickFunc() {
         window.focus();
@@ -16,7 +11,6 @@ function sendNotification(title, options) {
         notification.onclick = clickFunc;
     } else if (Notification.permission !== 'denied') {
         Notification.requestPermission(function (permission) {
-            // send notification
             if (permission === "granted") {
                 var notification = new Notification(title, options);
                 notification.onclick = clickFunc;
@@ -31,12 +25,14 @@ $(document).ready(function(){
 
 $(window).on('load', function(){
 
+    //check browser support for notifications
     if (("Notification" in window)) {
         Notification.requestPermission();
     } else {
         console.log('Your browser does not support HTML5 Notifications');
     }
 
+    //subscribe to new messages
     var pusher = new Pusher('5ccc3f2a7680d594a7dc', {
         encrypted: true
     });

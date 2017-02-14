@@ -37,13 +37,12 @@ body {
             padding-left: 10px;
             padding-right: 10px;
             margin-left: 10px;
-            margin-top: -100%;
             vertical-align: top;
             border-radius: 50px;
             -moz-user-select: none;
             -webkit-user-select: none;
             cursor: default;
-            display: none;
+            display: inline-block;
         }
     }
     .user-name {
@@ -103,17 +102,24 @@ body {
     }
 }
 
-.search {
+.tool-pannel {
     font-size: 20px;
     position: fixed;
     top: 70px;
     right: -50px;
-    background: #63B8FF;
-    color: #ffffff;
-    padding: 15px;
-    cursor: pointer;
-    @include opacity(0.8);
     z-index: 200;
+    .search {
+        background: #63B8FF;
+        color: #ffffff;
+        padding: 15px;
+        cursor: pointer;
+        display: block;
+        margin-top: 10px;
+        @include opacity(0.8);
+    }
+    .arrow-down {
+        @extend .search;
+    }
 }
 
 .send-message-container {

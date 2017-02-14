@@ -35,13 +35,12 @@ body {
       padding-left: 10px;
       padding-right: 10px;
       margin-left: 10px;
-      margin-top: -100%;
       vertical-align: top;
       border-radius: 50px;
       -moz-user-select: none;
       -webkit-user-select: none;
       cursor: default;
-      display: none; }
+      display: inline-block; }
   .header .user-name {
     font-size: 15px;
     color: #ffffff;
@@ -100,19 +99,22 @@ body {
       .header .search-form div :-ms-input-placeholder {
         color: #ffffff; }
 
-.search {
+.tool-pannel {
   font-size: 20px;
   position: fixed;
   top: 70px;
   right: -50px;
-  background: #63B8FF;
-  color: #ffffff;
-  padding: 15px;
-  cursor: pointer;
-  -moz-opacity: 0.8;
-  -khtml-opacity: 0.8;
-  opacity: 0.8;
   z-index: 200; }
+  .tool-pannel .search, .tool-pannel .arrow-down {
+    background: #63B8FF;
+    color: #ffffff;
+    padding: 15px;
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+    -moz-opacity: 0.8;
+    -khtml-opacity: 0.8;
+    opacity: 0.8; }
 
 .send-message-container {
   display: none;

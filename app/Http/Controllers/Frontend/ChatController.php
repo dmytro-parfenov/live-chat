@@ -11,6 +11,7 @@ use App\Models\Message;
 
 use Pusher;
 use Cookie;
+use Input;
 
 class ChatController extends BaseController{
 
@@ -19,7 +20,20 @@ class ChatController extends BaseController{
         $user_name = Cookie::get('user_name');
         $user_id = Cookie::get('user_id');
 
-        $messages = Message::all();
+
+        $search_value = Input::get('search_value');
+
+        if ($search_value) {
+            $messages = Message::where(function ($q) use ($search_value) {
+                $q->where('user_name', 'like', '%' . $search_value . '%');
+                $q->orWhere('message', 'like', '%' . $search_value . '%');
+                $q->orWhere('created_at', 'like', '%' . $search_value . '%');
+            });
+        } else {
+            $messages = Message::select('*');
+        }
+
+        $messages = $messages->orderBy('created_at', 'ASC')->get();
 
         return view('frontend.chat', compact(['messages', 'user_name', 'user_id']));
     }

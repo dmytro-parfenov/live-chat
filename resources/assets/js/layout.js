@@ -43,10 +43,11 @@ $(document).ready(function(){
         sendMessage();
     });
 
+    //show or hide search form
     $('.search').click(function () {
-        $('.search').stop();
-        $('.search').animate({'right':'-50px'}, 500);
-        showSearch = false;
+        $('.tool-pannel').stop();
+        $('.tool-pannel').animate({'right':'-50px'}, 500);
+        showToolPannel = false;
         $('.search-form').slideDown(500);
     });
 
@@ -57,24 +58,30 @@ $(document).ready(function(){
         event.stopPropagation();
     });
 
+    // go to page bottom
+    $('.arrow-down').click(function () {
+        $("html, body").animate({ scrollTop: $(document).height() });
+    });
+
 });
 
 $(window).on('load', function(){
 
+    //show or hide tool pannel and mesage container
     $("html, body").animate({ scrollTop: $(document).height() }, 500, function () {
         coordWindowTopMax = $(window).scrollTop();
-        showSearch = false;
+        showToolPannel = false;
         showMessageContainer = true;
         $(window).scroll(function () {
             coordWindowTop = $(window).scrollTop();
-            if (coordWindowTopMax - 70 > coordWindowTop && !showSearch && $('.search-form').css('display') !== 'block') {
-                $('.search').stop();
-                $('.search').animate({'right':'0'}, 500);
-                showSearch = true;
-            } else if (coordWindowTopMax - 70 < coordWindowTop && showSearch) {
-                $('.search').stop();
-                $('.search').animate({'right':'-50px'}, 500);
-                showSearch = false;
+            if (coordWindowTopMax - 70 > coordWindowTop && !showToolPannel && $('.search-form').css('display') !== 'block') {
+                $('.tool-pannel').stop();
+                $('.tool-pannel').animate({'right':'0'}, 500);
+                showToolPannel = true;
+            } else if (coordWindowTopMax - 70 < coordWindowTop && showToolPannel) {
+                $('.tool-pannel').stop();
+                $('.tool-pannel').animate({'right':'-50px'}, 500);
+                showToolPannel = false;
             }
             if (coordWindowTop >= coordWindowTopMax - 70 && !showMessageContainer) {
                 $('.send-message-container').stop();
@@ -87,15 +94,5 @@ $(window).on('load', function(){
             }
         });
     });
-
-    function countUsersOnline() {
-        usersOnline = $('.realtimeuserscounter__num').text();
-        $('.users-online-counter').css({'display':'inline-block'});
-        $('.users-online-counter').animate({marginTop:'0'}, 500);
-        $('.users-online-counter').text(usersOnline);
-        $('.realtimeuserscounter').remove();
-    }
-
-    setTimeout(countUsersOnline, 5000);
 
 });
