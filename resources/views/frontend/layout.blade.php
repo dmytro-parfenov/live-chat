@@ -15,7 +15,7 @@
     <div class="header">
         <div class="content-container">
             <div class="row">
-                <div class="site-name col-xs-6"><a href="/">Live chat</a></div>
+                <div class="site-name col-xs-6"><a href="/">Live chat</a><div class="users-online-counter" data-toggle="tooltip" data-placement="bottom" title="Users online">{{$online_users}}</div></div>
                 @if (!empty($user_name) && !empty($user_id))
                     <div class="user-name col-xs-6"><span data-toggle="tooltip" data-placement="bottom" title="Edit name">{{$user_name}}</span></div>
                 @endif

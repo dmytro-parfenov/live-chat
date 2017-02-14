@@ -28,6 +28,21 @@ body {
             color: #ffffff;
             text-decoration: none;
         }
+        .users-online-counter {
+            font-size: 10px;
+            background: #ffffff;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            display: inline-block;
+            margin-left: 10px;
+            vertical-align: top;
+            border-radius: 50px;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            cursor: default;
+        }
     }
     .user-name {
         font-size: 15px;
