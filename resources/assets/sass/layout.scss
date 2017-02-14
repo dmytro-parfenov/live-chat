@@ -21,6 +21,7 @@ body {
     z-index: 100;
     @include shadowOutline(0px, 2px, 5px, 0px, rgba(153,153,153,1));
     .site-name {
+        position: relative;
         a {
             font-weight: bold;
             font-size: 20px;
@@ -35,13 +36,14 @@ body {
             padding-bottom: 5px;
             padding-left: 10px;
             padding-right: 10px;
-            display: inline-block;
             margin-left: 10px;
+            margin-top: -100%;
             vertical-align: top;
             border-radius: 50px;
             -moz-user-select: none;
             -webkit-user-select: none;
             cursor: default;
+            display: none;
         }
     }
     .user-name {
@@ -75,6 +77,19 @@ body {
     .get-user-name-active {
         display: block;
     }
+}
+
+.search {
+    font-size: 20px;
+    position: fixed;
+    top: 70px;
+    right: -50px;
+    background: #63B8FF;
+    color: #ffffff;
+    padding: 15px;
+    cursor: pointer;
+    @include opacity(0.8);
+    z-index: 200;
 }
 
 .send-message-container {

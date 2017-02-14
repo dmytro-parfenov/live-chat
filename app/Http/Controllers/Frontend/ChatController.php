@@ -21,9 +21,7 @@ class ChatController extends BaseController{
 
         $messages = Message::all();
 
-        $online_users = 1;
-
-        return view('frontend.chat', compact(['messages', 'user_name', 'user_id', 'online_users']));
+        return view('frontend.chat', compact(['messages', 'user_name', 'user_id']));
     }
 
     public function sendUserName(Request $request){

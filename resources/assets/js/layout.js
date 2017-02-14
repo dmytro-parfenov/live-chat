@@ -47,6 +47,41 @@ $(document).ready(function(){
 
 $(window).on('load', function(){
 
-    $("html, body").animate({ scrollTop: $(document).height() }, 500);
+    $("html, body").animate({ scrollTop: $(document).height() }, 500, function () {
+        coordWindowTopMax = $(window).scrollTop();
+        showSearch = false;
+        showMessageContainer = true;
+        $(window).scroll(function () {
+            coordWindowTop = $(window).scrollTop();
+            if (coordWindowTopMax - 70 > coordWindowTop && !showSearch) {
+                $('.search').stop();
+                $('.search').animate({'right':'0'}, 500);
+                showSearch = true;
+            } else if (coordWindowTopMax - 70 < coordWindowTop && showSearch) {
+                $('.search').stop();
+                $('.search').animate({'right':'-50px'}, 500);
+                showSearch = false;
+            }
+            if (coordWindowTop >= coordWindowTopMax && !showMessageContainer) {
+                $('.send-message-container').stop();
+                $('.send-message-container').animate({'bottom':'0'}, 500);
+                showMessageContainer = true;
+            } else if (coordWindowTop < coordWindowTopMax && showMessageContainer) {
+                $('.send-message-container').stop();
+                $('.send-message-container').animate({'bottom':'-70px'}, 500);
+                showMessageContainer = false;
+            }
+        });
+    });
+
+    function countUsersOnline() {
+        usersOnline = $('.realtimeuserscounter__num').text();
+        $('.users-online-counter').css({'display':'inline-block'});
+        $('.users-online-counter').animate({marginTop:'0'}, 500);
+        $('.users-online-counter').text(usersOnline);
+        $('.realtimeuserscounter').remove();
+    }
+
+    setTimeout(countUsersOnline, 5000);
 
 });

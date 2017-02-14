@@ -19,26 +19,29 @@ body {
   -webkit-box-shadow: 0px 2px 5px 0px #999999;
   -moz-box-shadow: 0px 2px 5px 0px #999999;
   box-shadow: 0px 2px 5px 0px #999999; }
-  .header .site-name a {
-    font-weight: bold;
-    font-size: 20px;
-    white-space: nowrap;
-    color: #ffffff;
-    text-decoration: none; }
-  .header .site-name .users-online-counter {
-    font-size: 10px;
-    background: #ffffff;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    display: inline-block;
-    margin-left: 10px;
-    vertical-align: top;
-    border-radius: 50px;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    cursor: default; }
+  .header .site-name {
+    position: relative; }
+    .header .site-name a {
+      font-weight: bold;
+      font-size: 20px;
+      white-space: nowrap;
+      color: #ffffff;
+      text-decoration: none; }
+    .header .site-name .users-online-counter {
+      font-size: 10px;
+      background: #ffffff;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-left: 10px;
+      margin-top: -100%;
+      vertical-align: top;
+      border-radius: 50px;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      cursor: default;
+      display: none; }
   .header .user-name {
     font-size: 15px;
     color: #ffffff;
@@ -69,6 +72,20 @@ body {
       color: #ffffff; }
   .header .get-user-name-active {
     display: block; }
+
+.search {
+  font-size: 20px;
+  position: fixed;
+  top: 70px;
+  right: -50px;
+  background: #63B8FF;
+  color: #ffffff;
+  padding: 15px;
+  cursor: pointer;
+  -moz-opacity: 0.8;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;
+  z-index: 200; }
 
 .send-message-container {
   display: none;

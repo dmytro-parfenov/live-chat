@@ -15,7 +15,7 @@
     <div class="header">
         <div class="content-container">
             <div class="row">
-                <div class="site-name col-xs-6"><a href="/">Live chat</a><div class="users-online-counter" data-toggle="tooltip" data-placement="bottom" title="Users online">{{$online_users}}</div></div>
+                <div class="site-name col-xs-6"><a href="/">Live chat</a><div class="users-online-counter" data-toggle="tooltip" data-placement="bottom" title="Users online"></div></div>
                 @if (!empty($user_name) && !empty($user_id))
                     <div class="user-name col-xs-6"><span data-toggle="tooltip" data-placement="bottom" title="Edit name">{{$user_name}}</span></div>
                 @endif
@@ -26,6 +26,8 @@
             </div>
         </div>
     </div>
+
+    <div class="search glyphicon glyphicon-search" data-toggle="tooltip" data-placement="bottom" title="Search"></div>
 
     @yield('main')
 
@@ -42,6 +44,9 @@
         </div>
     </div>
 
+    <div class="realtimeuserscounter"></div>
+
+    <script src="https://realtimeusers.bycontrast.co/realtimeusers.js"></script>
     <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/frontend/js/layout.min.js"></script>
