@@ -76,11 +76,11 @@ $(window).on('load', function(){
                 $('.search').animate({'right':'-50px'}, 500);
                 showSearch = false;
             }
-            if (coordWindowTop >= coordWindowTopMax && !showMessageContainer) {
+            if (coordWindowTop >= coordWindowTopMax - 70 && !showMessageContainer) {
                 $('.send-message-container').stop();
                 $('.send-message-container').animate({'bottom':'0'}, 500);
                 showMessageContainer = true;
-            } else if (coordWindowTop < coordWindowTopMax && showMessageContainer) {
+            } else if (coordWindowTop < coordWindowTopMax - 70 && showMessageContainer) {
                 $('.send-message-container').stop();
                 $('.send-message-container').animate({'bottom':'-70px'}, 500);
                 showMessageContainer = false;
