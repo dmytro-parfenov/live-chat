@@ -8,6 +8,9 @@
                 <div class="message-block">
                     <div class="message-blok-top">
                         <div class="name">{{$message->user_name}}</div>
+                        @if ($message->user_location_lat !== '' && $message->user_location_lng)
+                            <div class="map-marker glyphicon glyphicon-map-marker" data-user-location-lat="{{$message->user_location_lat}}" data-user-location-lng="{{$message->user_location_lng}}"></div>
+                        @endif
                         <div class="time">{{$message->created_at}}</div>
                     </div>
                     <div class="message-block-bottom">{{$message->message}}</div>
@@ -20,10 +23,15 @@
         @endif
     </div>
 
+    <div class="background-map-object"></div>
+    <div id="map-object">
+        <div id="map-object-location"></div>
+    </div>
 
 @endsection
 
 @push('style')
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIpi0wvFb7yyxMzJZWXYxX3cEQn_byngU"></script>
 <link rel="stylesheet" property='stylesheet' href="/frontend/css/chat.min.css">
 @endpush
 

@@ -1,9 +1,4 @@
 //functions
-function soundNotification(url) {
-    var audio = new Audio();
-    audio.src = url;
-    audio.autoplay = true;
-}
 function sendMessage() {
     var message = $('.send-message-container input').val();
     var token = $('.send-message-container input').data('token');
@@ -15,7 +10,6 @@ function sendMessage() {
                     message: message},
             success: function(){
                 $('.send-message-container input').val('');
-                soundNotification('frontend/sounds/send-message.wav');
             }
         });
     }
@@ -25,22 +19,6 @@ $(document).ready(function(){
 
     //load bootstrap
     $('[data-toggle="tooltip"]').tooltip();
-
-    // get new user geocording
-    $('input[name=user_name]').focus(function () {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            latitute = position.coords.latitude+','+position.coords.longitude;
-            $.ajax({
-                type: "GET",
-                url: "https://maps.googleapis.com/maps/api/geocode/json",
-                data: {latlng: latitute,
-                    language: 'en'},
-                success: function(data){
-                    $('input[name=user_location]').val(data.results[0].formatted_address);
-                }
-            });
-        });
-    });
 
     //edit user name
     $('.user-name span').click(function () {
@@ -85,7 +63,14 @@ $(window).on('load', function(){
 
     // check browser support geolocation
     if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition(function() {});
+        navigator.geolocation.getCurrentPosition(function(position) {
+            $.ajax({
+                type: "GET",
+                url: "/send-location",
+                data: {user_location_lat: position.coords.latitude,
+                    user_location_lng: position.coords.longitude}
+            });
+        });
     } else {
         console.log('Geolocation is not supported by this browser');
     }

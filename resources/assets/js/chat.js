@@ -1,4 +1,9 @@
 // functions
+function soundNotification(url) {
+    var audio = new Audio();
+    audio.src = url;
+    audio.autoplay = true;
+}
 function sendNotification(title, options) {
     function clickFunc() {
         window.focus();
@@ -21,6 +26,30 @@ function sendNotification(title, options) {
 }
 
 $(document).ready(function(){
+
+    //show or hide user location
+    $('.map-marker').click(function () {
+
+        locationLat = parseFloat($(this).attr("data-user-location-lat"));
+        locationLng = parseFloat($(this).attr("data-user-location-lng"));
+        mapObject = $('#map-object-location')[0];
+        var myLatLng = {lat: locationLat, lng: locationLng};
+        var map = new google.maps.Map(mapObject, {
+            zoom: 14,
+            center: myLatLng
+        });
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map
+        });
+        $('.background-map-object, #map-object').stop();
+        $('.background-map-object, #map-object').fadeIn(500);
+    });
+    $('.background-map-object').click(function () {
+        $('.background-map-object, #map-object').stop();
+        $('.background-map-object, #map-object').fadeOut(500);
+        $('#map-object-location').find('div').remove();
+    });
 
 });
 

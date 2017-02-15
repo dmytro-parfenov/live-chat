@@ -20,8 +20,22 @@
         position: relative;
         margin-bottom: 15px;
         .name {
+            display: inline-block;
+            vertical-align: top;
             font-size: 18px;
             color: #000000;
+        }
+        .map-marker {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 14px;
+            color: #63B8FF;
+            margin-left: 10px;
+            @include transition(0.2);
+            cursor: pointer;
+            &:hover{
+                @include opacity(0.8);
+            }
         }
         .time {
             color: #999999;
@@ -35,4 +49,28 @@
         font-size: 14px;
         color: #000000;
     }
+}
+
+.background-map-object {
+    position: fixed;
+    z-index: 300;
+    background: #000000;
+    @include opacity(0.8);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+}
+#map-object{
+    position: fixed;
+    z-index: 400;
+    height: 300px;
+    width: 80%;
+    top: 80px;
+    left: 10%;
+    display: none;
+}
+#map-object-location {
+    height: 100%;
 }

@@ -41,12 +41,10 @@ class ChatController extends BaseController{
     public function sendUserName(Request $request){
 
         $user_name = $request->get('user_name');
-        $user_location = $request->get('user_location');
 
         if ($user_name !== '') {
             Cookie::queue('user_name', $user_name);
             Cookie::queue('user_id', time());
-            Cookie::queue('user_location', $user_location);
 
             $options = array(
                 'encrypted' => true
@@ -69,16 +67,18 @@ class ChatController extends BaseController{
         $message = $request->get('message');
         $user_name = Cookie::get('user_name');
         $user_id = Cookie::get('user_id');
-        $user_location = Cookie::get('user_location');
+        $user_location_lat = Cookie::get('user_location_lat');
+        $user_location_lng = Cookie::get('user_location_lng');
 
         if ($message !== '' && !empty($user_name) && !empty($user_id)) {
 
-            $message = Message::create( ['user_id' => $user_id, 'user_name' => $user_name, 'message' => $message] );
-            $message->created_at = Carbon::now()->toDateTimeString();
+            if ($user_location_lat && $user_location_lng) {
+                $message = Message::create( ['user_id' => $user_id, 'user_name' => $user_name, 'message' => $message, 'user_location_lat' => $user_location_lat, 'user_location_lng' => $user_location_lng] );
+            } else {
+                $message = Message::create( ['user_id' => $user_id, 'user_name' => $user_name, 'message' => $message] );
 
-            if (!empty($user_location)) {
-//                $message = $message->update(['user_location' => $user_location]);
             }
+            $message->created_at = Carbon::now()->toDateTimeString();
 
             $options = array(
                 'encrypted' => true
@@ -95,6 +95,18 @@ class ChatController extends BaseController{
 
             $pusher->trigger('new-message-channel', 'new-message-event', $message);
 
+        }
+
+    }
+
+    public function sendLocation(Request $request){
+
+        $user_location_lat = $request->get('user_location_lat');
+        $user_location_lng = $request->get('user_location_lng');
+
+        if ($user_location_lat && $user_location_lng){
+            Cookie::queue('user_location_lat', $user_location_lat);
+            Cookie::queue('user_location_lng', $user_location_lng);
         }
 
     }
