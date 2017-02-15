@@ -2,6 +2,7 @@
 function sendNotification(title, options) {
     function clickFunc() {
         window.focus();
+        $("html, body").animate({ scrollTop: $(document).height() }, 500);
         this.close();
     }
     // check rights for notifications
@@ -32,34 +33,39 @@ $(window).on('load', function(){
         console.log('Your browser does not support HTML5 Notifications');
     }
 
-    //subscribe to new messages
+    // load pusher
     var pusher = new Pusher('5ccc3f2a7680d594a7dc', {
         encrypted: true
     });
 
-    var channel = pusher.subscribe('new-message-channel');
-    channel.bind('new-message-event', function(data) {
+    // subscribe to new messages
+    var channelMessage = pusher.subscribe('new-message-channel');
+    channelMessage.bind('new-message-event', function(data) {
         $("html, body").animate({ scrollTop: $(document).height() }, 500);
         $('.message-block').last().after(data.html);
         $('.message-block').last().hide();
         $('.message-block').last().fadeIn(500);
 
-        $.ajax({
-            type: "GET",
-            url: "/get-cookie-user-id",
-            success: function(response){
-                response = parseInt(response);
-                if (response !== data.user_id) {
-                    soundNotification('frontend/sounds/get-message.wav');
-                    sendNotification(data.user_name, {
-                        body: data.message,
-                        icon: 'favicon.ico',
-                        dir: 'auto'
-                    });
-                }
-            }
-        });
+        if (document.hidden) {
+            soundNotification('frontend/sounds/get-message.wav');
+            sendNotification(data.user_name, {
+                body: data.message,
+                icon: 'favicon.ico',
+                dir: 'auto'
+            });
+        }
 
+    });
+
+    // subscribe to new users
+    var channelUser = pusher.subscribe('new-user-channel');
+    channelUser.bind('new-user-event', function(data) {
+        soundNotification('frontend/sounds/get-message.wav');
+        sendNotification('New user connected', {
+            body: data,
+            icon: 'favicon.ico',
+            dir: 'auto'
+        });
     });
 
 });

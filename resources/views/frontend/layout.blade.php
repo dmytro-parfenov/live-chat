@@ -21,6 +21,7 @@
                 @endif
                 <form class="get-user-name col-xs-6 @if (empty($user_name) || empty($user_id)) get-user-name-active @endif" method="POST" action="/send-user-name">
                     {!! csrf_field() !!}
+                    <input type="hidden" name="user_location">
                     <input type="text" placeholder="Enter your name" name="user_name" maxlength="10" autocomplete="off" required>
                 </form>
             </div>

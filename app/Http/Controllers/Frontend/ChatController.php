@@ -41,10 +41,23 @@ class ChatController extends BaseController{
     public function sendUserName(Request $request){
 
         $user_name = $request->get('user_name');
+        $user_location = $request->get('user_location');
 
         if ($user_name !== '') {
             Cookie::queue('user_name', $user_name);
             Cookie::queue('user_id', time());
+            Cookie::queue('user_location', $user_location);
+
+            $options = array(
+                'encrypted' => true
+            );
+            $pusher = new Pusher(
+                env('PUSHER_KEY'),
+                env('PUSHER_SECRET'),
+                env('PUSHER_APP_ID'),
+                $options
+            );
+            $pusher->trigger('new-user-channel', 'new-user-event', $user_name);
         }
 
         return redirect('/');
@@ -56,19 +69,24 @@ class ChatController extends BaseController{
         $message = $request->get('message');
         $user_name = Cookie::get('user_name');
         $user_id = Cookie::get('user_id');
+        $user_location = Cookie::get('user_location');
 
         if ($message !== '' && !empty($user_name) && !empty($user_id)) {
 
             $message = Message::create( ['user_id' => $user_id, 'user_name' => $user_name, 'message' => $message] );
             $message->created_at = Carbon::now()->toDateTimeString();
 
+            if (!empty($user_location)) {
+//                $message = $message->update(['user_location' => $user_location]);
+            }
+
             $options = array(
                 'encrypted' => true
             );
             $pusher = new Pusher(
-                '5ccc3f2a7680d594a7dc',
-                '06268cdae70c1f039eb5',
-                '301741',
+                env('PUSHER_KEY'),
+                env('PUSHER_SECRET'),
+                env('PUSHER_APP_ID'),
                 $options
             );
 
@@ -78,14 +96,6 @@ class ChatController extends BaseController{
             $pusher->trigger('new-message-channel', 'new-message-event', $message);
 
         }
-
-    }
-
-    public function getCookieUserId(){
-
-        $user_id_login = Cookie::get('user_id');
-
-        return $user_id_login;
 
     }
 

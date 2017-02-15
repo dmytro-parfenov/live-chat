@@ -26,6 +26,22 @@ $(document).ready(function(){
     //load bootstrap
     $('[data-toggle="tooltip"]').tooltip();
 
+    // get new user geocording
+    $('input[name=user_name]').focus(function () {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            latitute = position.coords.latitude+','+position.coords.longitude;
+            $.ajax({
+                type: "GET",
+                url: "https://maps.googleapis.com/maps/api/geocode/json",
+                data: {latlng: latitute,
+                    language: 'en'},
+                success: function(data){
+                    $('input[name=user_location]').val(data.results[0].formatted_address);
+                }
+            });
+        });
+    });
+
     //edit user name
     $('.user-name span').click(function () {
         $(this).closest('.user-name').hide(500, function () {
@@ -66,6 +82,13 @@ $(document).ready(function(){
 });
 
 $(window).on('load', function(){
+
+    // check browser support geolocation
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function() {});
+    } else {
+        console.log('Geolocation is not supported by this browser');
+    }
 
     //show or hide tool pannel and mesage container
     $("html, body").animate({ scrollTop: $(document).height() }, 500, function () {
