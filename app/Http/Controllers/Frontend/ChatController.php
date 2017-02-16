@@ -33,7 +33,7 @@ class ChatController extends BaseController{
             $messages = Message::select('*');
         }
 
-        $messages = $messages->orderBy('created_at', 'ASC')->get();
+        $messages = $messages->latest()->take(20)->get()->reverse();
 
         return view('frontend.chat', compact(['messages', 'user_name', 'user_id']));
     }
@@ -107,6 +107,21 @@ class ChatController extends BaseController{
         if ($user_location_lat && $user_location_lng){
             Cookie::queue('user_location_lat', $user_location_lat);
             Cookie::queue('user_location_lng', $user_location_lng);
+        }
+
+    }
+
+    public function showMoreMessages(Request $request){
+
+        $first_message = $request->get('first_message');
+        if ($first_message) {
+            $messages = Message::where('id','<',$first_message);
+            $messages = $messages->latest()->take(20)->get()->reverse();
+            if (count($messages) > 0) {
+                $html = view('frontend.includes.message', compact(['messages']))->render();
+                $data = json_encode(['html' => $html,'first_message' => $messages->first()->id]);
+                return $data;
+            }
         }
 
     }

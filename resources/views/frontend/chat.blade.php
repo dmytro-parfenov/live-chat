@@ -4,6 +4,10 @@
 
     <div class="messages-container content-container">
         @if (count($messages) > 0)
+            <div class="show-earlier">
+                {!! csrf_field() !!}
+                <span data-first-message="{{$messages->first()->id}}">show earlier</span>
+            </div>
             @foreach($messages as $message)
                 <div class="message-block">
                     <div class="message-blok-top">

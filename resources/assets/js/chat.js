@@ -81,6 +81,28 @@ $(document).ready(function(){
         $('.background-map-object, #map-object').fadeOut(500);
     });
 
+    //show more messages
+    $('.show-earlier span').click(function () {
+       first_message = $(this).attr('data-first-message');
+       _token = $(this).prev().val();
+        $.ajax({
+            type: "POST",
+            url: "/show-more-messages",
+            dataType: 'json',
+            data: {_token: _token,
+                first_message: first_message},
+            success: function (response) {
+                $('.message-block').first().before(response.html);
+                $('.message-block').hide();
+                $('.message-block').fadeIn(500);
+                $('.show-earlier span').attr('data-first-message', response.first_message);
+            },
+            error: function () {
+                $('.show-earlier').slideUp(500);
+            }
+        });
+    });
+
 });
 
 $(window).on('load', function(){
