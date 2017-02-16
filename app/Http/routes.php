@@ -13,6 +13,6 @@
 
 Route::post('/send-user-name', 'Frontend\ChatController@sendUserName');
 Route::post('/send-message', 'Frontend\ChatController@sendMessage');
-Route::get('/send-location', 'Frontend\ChatController@sendLocation');
 
+Route::get('/send-location', 'Frontend\ChatController@sendLocation');
 Route::get('/', 'Frontend\ChatController@index');

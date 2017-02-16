@@ -14,6 +14,14 @@ function sendMessage() {
         });
     }
 }
+function showPosition(position) {
+    $.ajax({
+        type: "GET",
+        url: "/send-location",
+        data: {user_location_lat: position.coords.latitude,
+            user_location_lng: position.coords.longitude}
+    });
+}
 
 $(document).ready(function(){
 
@@ -60,17 +68,9 @@ $(document).ready(function(){
 });
 
 $(window).on('load', function(){
-
     // check browser support geolocation
     if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            $.ajax({
-                type: "GET",
-                url: "/send-location",
-                data: {user_location_lat: position.coords.latitude,
-                    user_location_lng: position.coords.longitude}
-            });
-        });
+        navigator.geolocation.getCurrentPosition(showPosition);
     } else {
         console.log('Geolocation is not supported by this browser');
     }
