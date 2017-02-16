@@ -29,11 +29,11 @@ class ChatController extends BaseController{
                 $q->orWhere('message', 'like', '%' . $search_value . '%');
                 $q->orWhere('created_at', 'like', '%' . $search_value . '%');
             });
+            $messages = $messages->orderBy('created_at','ASC')->get();
         } else {
             $messages = Message::select('*');
+            $messages = $messages->latest()->take(20)->get()->reverse();
         }
-
-        $messages = $messages->latest()->take(20)->get()->reverse();
 
         return view('frontend.chat', compact(['messages', 'user_name', 'user_id']));
     }

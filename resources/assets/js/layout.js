@@ -14,11 +14,14 @@ function sendMessage() {
         });
     }
 }
+
 function showPosition(position) {
+    var _token = $('.geolocation-token').find('input').val();
     $.ajax({
-        type: "GET",
+        type: "POST",
         url: "/send-location",
-        data: {user_location_lat: position.coords.latitude,
+        data: { _token: _token,
+            user_location_lat: position.coords.latitude,
             user_location_lng: position.coords.longitude}
     });
 }
@@ -56,11 +59,15 @@ $(document).ready(function(){
     $(document).click(function(event) {
         if ($(event.target).closest('.search-form').length) return;
         if ($(event.target).closest('.search').length) return;
+        if ($(event.target).closest('.search-result-again span').length) return;
         $('.search-form').slideUp(500);
         event.stopPropagation();
     });
 
-    // go to page bottom
+    // go to page bottom or top
+    $('.arrow-up').click(function () {
+        $("html, body").animate({ scrollTop: 0 });
+    });
     $('.arrow-down').click(function () {
         $("html, body").animate({ scrollTop: $(document).height() });
     });
@@ -68,39 +75,12 @@ $(document).ready(function(){
 });
 
 $(window).on('load', function(){
+
     // check browser support geolocation
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
         console.log('Geolocation is not supported by this browser');
     }
-
-    //show or hide tool pannel and mesage container
-    $("html, body").animate({ scrollTop: $(document).height() }, 500, function () {
-        coordWindowTopMax = $(window).scrollTop();
-        showToolPannel = false;
-        showMessageContainer = true;
-        $(window).scroll(function () {
-            coordWindowTop = $(window).scrollTop();
-            if (coordWindowTopMax - 70 > coordWindowTop && !showToolPannel && $('.search-form').css('display') !== 'block') {
-                $('.tool-pannel').stop();
-                $('.tool-pannel').animate({'right':'0'}, 500);
-                showToolPannel = true;
-            } else if (coordWindowTopMax - 70 < coordWindowTop && showToolPannel) {
-                $('.tool-pannel').stop();
-                $('.tool-pannel').animate({'right':'-50px'}, 500);
-                showToolPannel = false;
-            }
-            if (coordWindowTop >= coordWindowTopMax - 70 && !showMessageContainer) {
-                $('.send-message-container').stop();
-                $('.send-message-container').animate({'bottom':'0'}, 500);
-                showMessageContainer = true;
-            } else if (coordWindowTop < coordWindowTopMax - 70 && showMessageContainer) {
-                $('.send-message-container').stop();
-                $('.send-message-container').animate({'bottom':'-70px'}, 500);
-                showMessageContainer = false;
-            }
-        });
-    });
 
 });

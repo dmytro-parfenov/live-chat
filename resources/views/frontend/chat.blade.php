@@ -4,10 +4,15 @@
 
     <div class="messages-container content-container">
         @if (count($messages) > 0)
-            <div class="show-earlier">
-                {!! csrf_field() !!}
-                <span data-first-message="{{$messages->first()->id}}">show earlier</span>
-            </div>
+            @if (Request::get('search_value'))
+                <div class="search-result">Search result for: "{{Request::get('search_value')}}"</div>
+                <div class="search-result-again"><span>try again</span></div>
+            @else
+                <div class="show-earlier">
+                    {!! csrf_field() !!}
+                    <span data-first-message="{{$messages->first()->id}}">show earlier</span>
+                </div>
+            @endif
             @foreach($messages as $message)
                 <div class="message-block">
                     <div class="message-blok-top">
@@ -21,6 +26,10 @@
                 </div>
             @endforeach
         @else
+            @if (Request::get('search_value'))
+                <div class="search-result">Search result for: "{{Request::get('search_value')}}"</div>
+                <div class="search-result-again"><span>try again</span></div>
+            @endif
             <div class="message-block">
                 <div class="no-messages">no messages</div>
             </div>

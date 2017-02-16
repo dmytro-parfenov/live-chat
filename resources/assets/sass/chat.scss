@@ -11,6 +11,20 @@
 .messages-container {
     margin-top: 75px;
     margin-bottom: 80px;
+    .search-result {
+        margin-bottom: 5px;
+        font-size: 15px;
+        color: #999999;
+    }
+    .search-result-again {
+        margin-bottom: 15px;
+        span {
+            font-size: 13px;
+            color: #63B8FF;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+    }
     .show-earlier {
         text-align: center;
         margin-bottom: 15px;

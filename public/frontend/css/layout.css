@@ -42,10 +42,10 @@ body {
       cursor: default;
       display: inline-block; }
   .header .user-name {
-    font-size: 15px;
-    color: #ffffff;
     text-align: right; }
     .header .user-name span {
+      font-size: 15px;
+      color: #ffffff;
       cursor: pointer;
       padding-bottom: 5px;
       border-bottom: 1px solid #ffffff; }
@@ -105,7 +105,7 @@ body {
   top: 70px;
   right: -50px;
   z-index: 200; }
-  .tool-pannel .search, .tool-pannel .arrow-down {
+  .tool-pannel .search, .tool-pannel .arrow-down, .tool-pannel .arrow-up {
     background: #63B8FF;
     color: #ffffff;
     padding: 15px;
@@ -114,7 +114,16 @@ body {
     margin-top: 10px;
     -moz-opacity: 0.8;
     -khtml-opacity: 0.8;
-    opacity: 0.8; }
+    opacity: 0.8;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s; }
+    .tool-pannel .search:hover, .tool-pannel .arrow-down:hover, .tool-pannel .arrow-up:hover {
+      margin-right: 5px;
+      -moz-opacity: 1;
+      -khtml-opacity: 1;
+      opacity: 1; }
 
 .send-message-container {
   display: none;
@@ -151,8 +160,8 @@ body {
     .send-message-container .send-message-button button {
       font-size: 14px;
       padding: 15px;
-      background: transparent;
-      color: #ffffff;
+      background: #ffffff;
+      color: #63B8FF;
       outline: none;
       border: 0;
       border-radius: 50px;
@@ -161,8 +170,10 @@ body {
       -o-transition: all 0.2s;
       transition: all 0.2s; }
       .send-message-container .send-message-button button:hover {
-        background: #ffffff;
-        color: #63B8FF; }
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        transform: scale(1.2); }
 
 .send-message-container-active {
   display: block; }

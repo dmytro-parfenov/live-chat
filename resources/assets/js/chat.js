@@ -4,6 +4,7 @@ function soundNotification(url) {
     audio.src = url;
     audio.autoplay = true;
 }
+
 function sendNotification(title, options) {
     function clickFunc() {
         window.focus();
@@ -25,13 +26,53 @@ function sendNotification(title, options) {
     }
 }
 
+//TODO  set action of that function after show earlier elements
+
+function windowScroll(height, toTop) {
+    //show or hide tool pannel and mesage container
+    var coordWindowTopMax = height;
+    if (toTop) {
+        height = 0;
+    }
+    $("html, body").animate({ scrollTop: height }, 500, function () {
+        if (!toTop) {
+            coordWindowTopMax = $(window).scrollTop();
+        }
+        showToolPannel = false;
+        var showMessageContainer = true;
+        $(window).scroll(function () {
+            coordWindowTop = $(window).scrollTop();
+            if (coordWindowTopMax - 70 > coordWindowTop && !showToolPannel && $('.search-form').css('display') !== 'block') {
+                $('.tool-pannel').stop();
+                $('.tool-pannel').animate({'right':'0'}, 500);
+                showToolPannel = true;
+            } else if (coordWindowTopMax - 70 < coordWindowTop && showToolPannel) {
+                $('.tool-pannel').stop();
+                $('.tool-pannel').animate({'right':'-50px'}, 500);
+                showToolPannel = false;
+            }
+            if (coordWindowTop >= coordWindowTopMax - 70 && !showMessageContainer) {
+                $('.send-message-container').stop();
+                $('.send-message-container').animate({'bottom':'0'}, 500);
+                showMessageContainer = true;
+            } else if (coordWindowTop < coordWindowTopMax - 70 && showMessageContainer) {
+                $('.send-message-container').stop();
+                $('.send-message-container').animate({'bottom':'-70px'}, 500);
+                showMessageContainer = false;
+            }
+        });
+    });
+}
+
 $(document).ready(function(){
+
+    windowScroll($(document).height());
 
     //show or hide user location
     $('body').on('click', '.map-marker', function(){
         //get coords
-        locationLat = parseFloat($(this).attr("data-user-location-lat"));
-        locationLng = parseFloat($(this).attr("data-user-location-lng"));
+        var locationLat = parseFloat($(this).attr("data-user-location-lat"));
+        var locationLng = parseFloat($(this).attr("data-user-location-lng"));
         var myLatLng = {lat: locationLat, lng: locationLng};
 
         //get map containel object
@@ -83,8 +124,8 @@ $(document).ready(function(){
 
     //show more messages
     $('.show-earlier span').click(function () {
-       first_message = $(this).attr('data-first-message');
-       _token = $(this).prev().val();
+       var first_message = $(this).attr('data-first-message');
+       var _token = $(this).prev().val();
         $.ajax({
             type: "POST",
             url: "/show-more-messages",
@@ -95,12 +136,18 @@ $(document).ready(function(){
                 $('.message-block').first().before(response.html);
                 $('.message-block').hide();
                 $('.message-block').fadeIn(500);
+                windowScroll($(document).height(), true);
                 $('.show-earlier span').attr('data-first-message', response.first_message);
             },
             error: function () {
                 $('.show-earlier').slideUp(500);
             }
         });
+    });
+
+    //show search form
+    $('.search-result-again span').click(function () {
+        $('.search').click();
     });
 
 });
