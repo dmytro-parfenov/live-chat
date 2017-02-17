@@ -1,6 +1,6 @@
 //functions
 function showPosition(position) {
-    var _token = $('.geolocation-token').find('input').val();
+    var _token = $('meta[name=csrf-token]').attr('content');
     $.ajax({
         type: "POST",
         url: "/send-location",

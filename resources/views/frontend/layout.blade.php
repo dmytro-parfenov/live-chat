@@ -6,6 +6,7 @@
     <title>Live chat</title>
     <meta name="keywords" content="live, chat, laravel">
     <meta name="description" content="Live chat">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" property='stylesheet' href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" property='stylesheet' href="/frontend/css/layout.min.css">
     @stack('style')
@@ -15,6 +16,7 @@
     <div class="header">
         <div class="content-container">
             <div class="row">
+                {{--TODO make users online counter--}}
                 <div class="site-name col-xs-6"><a href="/">Live chat</a>{{--<div class="users-online-counter" data-toggle="tooltip" data-placement="bottom" title="Users online">1</div>--}}</div>
                 @if (!empty($user_name) && !empty($user_id))
                     <div class="user-name col-xs-6"><span>{{$user_name}}</span></div>
@@ -42,7 +44,7 @@
         <div class="content-container">
             <div class="row">
                 <div class="col-xs-9 col-sm-10 col-md-11">
-                    <input type="text" placeholder="Enter your message" name="message" autocomplete="off" data-token="{{ csrf_token() }}">
+                    <input type="text" placeholder="Enter your message" name="message" autocomplete="off">
                 </div>
                 <div class="col-xs-3 col-sm-2 col-md-1 send-message-button">
                     <button class="glyphicon glyphicon-ok"></button>
@@ -50,8 +52,6 @@
             </div>
         </div>
     </div>
-
-    <div class="geolocation-token">{!! csrf_field() !!}</div>
 
     <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

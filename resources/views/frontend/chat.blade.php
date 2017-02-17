@@ -9,7 +9,6 @@
                 <div class="search-result-again"><span>try again</span></div>
             @else
                 <div class="show-earlier">
-                    {!! csrf_field() !!}
                     <span data-first-message="{{$messages->first()->id}}">show earlier</span>
                 </div>
             @endif

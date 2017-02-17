@@ -1,12 +1,12 @@
 // functions
 function sendMessage() {
     var message = $('.send-message-container input').val();
-    var token = $('.send-message-container input').data('token');
+    var _token = $('meta[name=csrf-token]').attr('content');
     if (message.length > 0 ) {
         $.ajax({
             type: "POST",
             url: "/send-message",
-            data: { _token: token,
+            data: { _token: _token,
                 message: message},
             success: function(){
                 $('.send-message-container input').val('');
@@ -168,7 +168,7 @@ $(document).ready(function(){
     //show more messages
     $('.show-earlier span').click(function () {
        var first_message = $(this).attr('data-first-message');
-       var _token = $(this).prev().val();
+       var _token = $('meta[name=csrf-token]').attr('content');
         $.ajax({
             type: "POST",
             url: "/show-more-messages",
