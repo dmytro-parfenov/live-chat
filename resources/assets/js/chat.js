@@ -1,4 +1,20 @@
 // functions
+function sendMessage() {
+    var message = $('.send-message-container input').val();
+    var token = $('.send-message-container input').data('token');
+    if (message.length > 0 ) {
+        $.ajax({
+            type: "POST",
+            url: "/send-message",
+            data: { _token: token,
+                message: message},
+            success: function(){
+                $('.send-message-container input').val('');
+            }
+        });
+    }
+}
+
 function soundNotification(url) {
     var audio = new Audio();
     audio.src = url;
@@ -26,40 +42,41 @@ function sendNotification(title, options) {
     }
 }
 
-//TODO  set action of that function after show earlier elements
-
-function windowScroll(height, toTop) {
+function windowScroll(height) {
     //show or hide tool pannel and mesage container
-    var coordWindowTopMax = height;
-    if (toTop) {
-        height = 0;
-    }
     $("html, body").animate({ scrollTop: height }, 500, function () {
-        if (!toTop) {
-            coordWindowTopMax = $(window).scrollTop();
-        }
         showToolPannel = false;
         var showMessageContainer = true;
-        $(window).scroll(function () {
-            coordWindowTop = $(window).scrollTop();
-            if (coordWindowTopMax - 70 > coordWindowTop && !showToolPannel && $('.search-form').css('display') !== 'block') {
-                $('.tool-pannel').stop();
-                $('.tool-pannel').animate({'right':'0'}, 500);
-                showToolPannel = true;
-            } else if (coordWindowTopMax - 70 < coordWindowTop && showToolPannel) {
-                $('.tool-pannel').stop();
-                $('.tool-pannel').animate({'right':'-50px'}, 500);
-                showToolPannel = false;
+        var lastScrollTop = 0;
+        $(window).scroll(function (event) {
+            var st = $(this).scrollTop();
+            //scroll to down
+            if (st > lastScrollTop){
+                if (showToolPannel) {
+                    $('.tool-pannel').stop();
+                    $('.tool-pannel').animate({'right': '-50px'}, 500);
+                    showToolPannel = false;
+                }
+                if (!showMessageContainer) {
+                    $('.send-message-container').stop();
+                    $('.send-message-container').animate({'bottom': '0'}, 500);
+                    showMessageContainer = true;
+                }
             }
-            if (coordWindowTop >= coordWindowTopMax - 70 && !showMessageContainer) {
-                $('.send-message-container').stop();
-                $('.send-message-container').animate({'bottom':'0'}, 500);
-                showMessageContainer = true;
-            } else if (coordWindowTop < coordWindowTopMax - 70 && showMessageContainer) {
-                $('.send-message-container').stop();
-                $('.send-message-container').animate({'bottom':'-70px'}, 500);
-                showMessageContainer = false;
+            //scroll to up
+            else {
+                if (!showToolPannel && $('.search-form').css('display') !== 'block') {
+                    $('.tool-pannel').stop();
+                    $('.tool-pannel').animate({'right': '0'}, 500);
+                    showToolPannel = true;
+                }
+                if (showMessageContainer) {
+                    $('.send-message-container').stop();
+                    $('.send-message-container').animate({'bottom': '-70px'}, 500);
+                    showMessageContainer = false;
+                }
             }
+            lastScrollTop = st;
         });
     });
 }
@@ -67,6 +84,32 @@ function windowScroll(height, toTop) {
 $(document).ready(function(){
 
     windowScroll($(document).height());
+
+    //send message
+    $('.send-message-container input').keyup(function (event) {
+        if (event.keyCode === 13){
+            sendMessage();
+        }
+    });
+    $('.send-message-container button').click(function () {
+        sendMessage();
+    });
+
+    //show or hide search form
+    $('.search').click(function () {
+        $('.tool-pannel').stop();
+        $('.tool-pannel').animate({'right':'-50px'}, 500);
+        showToolPannel = false;
+        $('.search-form').slideDown(500);
+    });
+
+    $(document).click(function(event) {
+        if ($(event.target).closest('.search-form').length) return;
+        if ($(event.target).closest('.search').length) return;
+        if ($(event.target).closest('.search-result-again span').length) return;
+        $('.search-form').slideUp(500);
+        event.stopPropagation();
+    });
 
     //show or hide user location
     $('body').on('click', '.map-marker', function(){
@@ -136,7 +179,6 @@ $(document).ready(function(){
                 $('.message-block').first().before(response.html);
                 $('.message-block').hide();
                 $('.message-block').fadeIn(500);
-                windowScroll($(document).height(), true);
                 $('.show-earlier span').attr('data-first-message', response.first_message);
             },
             error: function () {

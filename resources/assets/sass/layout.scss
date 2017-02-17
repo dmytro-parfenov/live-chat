@@ -118,7 +118,10 @@ body {
         @include opacity(0.8);
         @include transition(0.2);
         &:hover {
-            margin-right: 5px;
+            -webkit-transform: scale(1.1);
+            -moz-transform: scale(1.1);
+            -o-transform: scale(1.1);
+            transform: scale(1.1);
             @include opacity(1);
         }
     }
