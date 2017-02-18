@@ -43,11 +43,11 @@
 @endsection
 
 @push('style')
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIpi0wvFb7yyxMzJZWXYxX3cEQn_byngU"></script>
 <link rel="stylesheet" property='stylesheet' href="/frontend/css/chat.min.css">
 @endpush
 
 @push('script')
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAIpi0wvFb7yyxMzJZWXYxX3cEQn_byngU"></script>
 <script type="text/javascript" src="/frontend/js/chat.min.js"></script>
 @endpush

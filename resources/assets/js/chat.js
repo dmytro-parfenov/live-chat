@@ -124,7 +124,8 @@ $(document).ready(function(){
         //generate map
         var map = new google.maps.Map(mapObjectLocation, {
             zoom: 14,
-            center: myLatLng
+            center: myLatLng,
+            mapTypeControl: false
         });
 
         $.ajax({
@@ -134,8 +135,9 @@ $(document).ready(function(){
                 language: 'en',
                 key: 'AIzaSyAIpi0wvFb7yyxMzJZWXYxX3cEQn_byngU'},
             success: function (response) {
+                var locationName = response.results[0].formatted_address;
                 // generate marker content
-                var contentString = '<div id="content-map-marker">'+response.results[0].formatted_address+'</div>';
+                var contentString = '<div id="content-map-marker">'+locationName+'</div>';
                 var infowindow = new google.maps.InfoWindow({
                     content: contentString
                 });
@@ -150,6 +152,7 @@ $(document).ready(function(){
                 google.maps.event.addListener(marker, 'click', function() {
                     infowindow.open(map,marker);
                 });
+
             }
         });
 
