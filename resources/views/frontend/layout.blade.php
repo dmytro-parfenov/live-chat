@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live chat</title>
-    <meta name="keywords" content="live, chat, laravel">
-    <meta name="description" content="Live chat">
+    <title>{{$settings->title}}</title>
+    <meta name="keywords" content="{{$settings->meta_keywords}}">
+    <meta name="description" content="{{$settings->meta_description}}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" property='stylesheet' href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" property='stylesheet' href="/frontend/css/layout.min.css">
@@ -17,7 +17,7 @@
         <div class="content-container">
             <div class="row">
                 {{--TODO make users online counter--}}
-                <div class="site-name col-xs-6"><a href="/">Live chat</a>{{--<div class="users-online-counter" data-toggle="tooltip" data-placement="bottom" title="Users online">1</div>--}}</div>
+                <div class="site-name col-xs-6"><a href="/">{{$settings->site_name}}</a>{{--<div class="users-online-counter" data-toggle="tooltip" data-placement="bottom" title="Users online">1</div>--}}</div>
                 @if (!empty($user_name) && !empty($user_id))
                     <div class="user-name col-xs-6"><span>{{$user_name}}</span></div>
                 @endif

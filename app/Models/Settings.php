@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Message extends Model
+class Settings extends Model
 {
-    protected $table = 'message';
+    protected $table = 'settings';
     protected $guarded = [];
     public $timestamps = false;
 

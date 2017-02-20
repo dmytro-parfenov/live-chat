@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Frontend\BaseController;
-use App\Models\Message;
+use App\Models\Messages;
 
 use Pusher;
 use Cookie;
@@ -24,14 +24,14 @@ class ChatController extends BaseController{
         $search_value = Input::get('search_value');
 
         if ($search_value) {
-            $messages = Message::where(function ($q) use ($search_value) {
+            $messages = Messages::where(function ($q) use ($search_value) {
                 $q->where('user_name', 'like', '%' . $search_value . '%');
                 $q->orWhere('message', 'like', '%' . $search_value . '%');
                 $q->orWhere('created_at', 'like', '%' . $search_value . '%');
             });
             $messages = $messages->orderBy('created_at','ASC')->get();
         } else {
-            $messages = Message::select('*');
+            $messages = Messages::select('*');
             $messages = $messages->latest()->take(20)->get()->reverse();
         }
 
@@ -73,9 +73,9 @@ class ChatController extends BaseController{
         if ($message !== '' && !empty($user_name) && !empty($user_id)) {
 
             if ($user_location_lat && $user_location_lng) {
-                $message = Message::create( ['user_id' => $user_id, 'user_name' => $user_name, 'message' => $message, 'user_location_lat' => $user_location_lat, 'user_location_lng' => $user_location_lng] );
+                $message = Messages::create( ['user_id' => $user_id, 'user_name' => $user_name, 'message' => $message, 'user_location_lat' => $user_location_lat, 'user_location_lng' => $user_location_lng] );
             } else {
-                $message = Message::create( ['user_id' => $user_id, 'user_name' => $user_name, 'message' => $message] );
+                $message = Messages::create( ['user_id' => $user_id, 'user_name' => $user_name, 'message' => $message] );
 
             }
             $message->created_at = Carbon::now()->toDateTimeString();
@@ -115,7 +115,7 @@ class ChatController extends BaseController{
 
         $first_message = $request->get('first_message');
         if ($first_message) {
-            $messages = Message::where('id','<',$first_message);
+            $messages = Messages::where('id','<',$first_message);
             $messages = $messages->latest()->take(20)->get()->reverse();
             if (count($messages) > 0) {
                 $html = view('frontend.includes.message', compact(['messages']))->render();

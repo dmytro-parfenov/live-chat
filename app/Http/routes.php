@@ -11,6 +11,17 @@
 |
 */
 
+Route::group(['prefix' => 'master', 'middleware' => 'auth.basic'], function(){
+
+    Route::get('/', 'Admin\AdminSettingsController@index');
+
+    Route::controllers([
+        'settings' 				=> 'Admin\AdminSettingsController',
+        'messages' 				=> 'Admin\AdminMessagesController',
+//        'users'					=> 'Admin\AdminUsersController',
+    ]);
+});
+
 Route::post('/send-user-name', 'Frontend\ChatController@sendUserName');
 Route::post('/send-message', 'Frontend\ChatController@sendMessage');
 Route::post('/show-more-messages', 'Frontend\ChatController@showMoreMessages');

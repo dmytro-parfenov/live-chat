@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+.message-list-header {
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #999999; }
+
+.message-list-block {
+  font-size: 14px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-bottom: 1px solid #dcdcdc; }
+  .message-list-block span {
+    display: block;
+    font-size: 12px;
+    color: #666666; }
+  .message-list-block input[type="checkbox"] {
+    visibility: hidden;
+    position: absolute; }
