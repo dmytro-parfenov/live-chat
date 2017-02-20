@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\SettingsRequest;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -56,6 +55,6 @@ class AdminMessagesController extends AdminBaseController
             Messages::destroy($messages_check);
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('success','Changes saved');
     }
 }

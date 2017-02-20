@@ -12,7 +12,7 @@
             	margin: 0;
             	background: #ebeae9;
             }
-            .content{ text-align: center;}
+            .content{ text-align: center; margin-bottom: 15px;}
             h1{
                 font-size: 20px;
                 font-family: 'Roboto', sans-serif;

@@ -2,17 +2,23 @@
 
 @section('main')
 
+    @if(Session::has('success'))
+        <div class="alert alert-success col-xs-12" role="alert">{{ Session::get('success') }}</div>
+    @endif
+
+    @include('errors.form-errors')
+
     <form method="get" action="" class="messages-sort-form col-xs-12">
         <div class="row">
-            <div class="col-xs-12 col-sm-2">
+            <div class="col-xs-12 col-sm-3">
                 <label>Search</label>
                 <input type="search" name="search_value" value="{{Input::get('search_value')}}" class="form-control" placeholder="Message or user name">
             </div>
-            <div class="col-xs-12 col-sm-2">
+            <div class="col-xs-12 col-sm-3">
                 <label>Date</label>
                 <input type="date" name="filter_date" value="{{Input::get('filter_date')}}" class="form-control">
             </div>
-            <div class="col-xs-12 col-sm-2">
+            <div class="col-xs-12 col-sm-3">
                 <label>Order by</label>
                 <select class="form-control order-by-select" name="order_by_value">
                     <option value="0" @if (Input::get('order_by_value') == 0) selected="" @endif>Newest</option>

@@ -32,3 +32,6 @@
   .message-list-block input[type="checkbox"] {
     visibility: hidden;
     position: absolute; }
+
+.delete-all-messages {
+  margin-top: 10px; }

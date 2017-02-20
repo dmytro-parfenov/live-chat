@@ -26,6 +26,6 @@ class AdminSettingsController extends AdminBaseController
 
         Settings::first()->update( array_merge($request->except(['_token'])) );
 
-        return redirect()->back();
+        return redirect()->back()->with('success','Settings saved');
     }
 }

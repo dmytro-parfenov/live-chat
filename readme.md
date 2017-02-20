@@ -8,13 +8,15 @@
     db_copy/                actual copy structure of database
     public
         bower_components/   bower components
+        admin/              compiled scripts, compiled styles for admin
         frontend/           compiled scripts, compiled styles, fonts, images, sounds for frontend
         bower.json          list of bower components
         .htaccess           htaccess setings
         robots.txt          robots config
     resources
-        assets/sass         frontend styles (.scss)
-        assets/js           frontend scripts (.js)
+        assets
+            admin/          admin styles (.scss) and scripts (.js)
+            frontend/       frontend styles (.scss) and scripts (.js)
         views               views of project
     vendor/                 composser packages
     .env                    connect to database etc.
@@ -28,6 +30,4 @@
 
 `Notes:`
 
-`1. Edit styles only in directory "resources/assets/sass"`
-
-`2. Edit scripts only in directory "resources/assets/js"`
+`1. Edit scripts and styles only in directory "resources/assets/"`

@@ -1,0 +1,28 @@
+@import '../global';
+
+.users-list-header {
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #999999;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.users-list-form {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    .users-list-form-block {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #dcdcdc;
+    }
+    .user-check {
+        visibility: hidden;
+        position: absolute;
+    }
+    a {
+        width: 100%;
+    }
+}
