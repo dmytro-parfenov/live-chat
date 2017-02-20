@@ -22,6 +22,8 @@ Route::group(['prefix' => 'master', 'middleware' => 'auth.basic'], function(){
     ]);
 });
 
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
 Route::post('/send-user-name', 'Frontend\ChatController@sendUserName');
 Route::post('/send-message', 'Frontend\ChatController@sendMessage');
 Route::post('/show-more-messages', 'Frontend\ChatController@showMoreMessages');

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 20 2017 г., 16:17
+-- Время создания: Фев 20 2017 г., 19:02
 -- Версия сервера: 5.5.50
 -- Версия PHP: 5.6.23
 
@@ -34,36 +34,17 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `user_location_lng` varchar(255) NOT NULL,
   `message` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=460 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=464 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `messages`
 --
 
 INSERT INTO `messages` (`id`, `user_id`, `user_name`, `user_location_lat`, `user_location_lng`, `message`, `created_at`) VALUES
-(434, 1487239496, 'dmitry', '48.506740799999996', '32.2670753', '2', '2017-02-16 12:45:10'),
-(435, 1487239496, 'dmitry', '48.506740799999996', '32.2670753', '3', '2017-02-16 12:45:12'),
-(436, 1487239496, 'dmitry', '48.506740799999996', '32.2670753', '4', '2017-02-16 12:45:14'),
-(438, 1487239496, 'dmitry', '48.506740799999996', '32.2670753', '6', '2017-02-16 12:45:18'),
-(439, 1487239496, 'dmitry', '48.506740799999996', '32.2670753', '7', '2017-02-16 12:48:02'),
-(440, 1487239496, 'dmitry', '48.506740799999996', '32.2670753', '8', '2017-02-16 12:48:04'),
-(442, 1487239496, 'dmitry', '48.506740799999996', '32.2670753', '0', '2017-02-16 12:48:07'),
-(443, 1487239496, 'dmitry', '48.506740799999996', '32.2670753', '11', '2017-02-16 12:48:10'),
-(445, 1487239496, 'dmitry', '48.506740799999996', '32.2670753', '13', '2017-02-16 12:48:13'),
-(446, 1487239496, 'dmitry', '48.506740799999996', '32.2670753', '14', '2017-02-16 12:48:14'),
-(447, 1487239496, 'dmitry', '48.506740799999996', '32.2670753', '15', '2017-02-16 12:48:16'),
-(448, 1487239496, 'dmitry', '48.506740799999996', '32.2670753', '16', '2017-02-16 12:48:18'),
-(449, 1487239496, 'dmitry', '48.506740799999996', '32.2670753', '17', '2017-02-16 12:48:20'),
-(450, 1487239496, 'dmitry', '48.506740799999996', '32.2670753', '18', '2017-02-16 12:48:22'),
-(451, 1487239496, 'dmitry', '48.506740799999996', '32.2670753', '19', '2017-02-16 12:48:24'),
-(452, 1487239496, 'dmitry', '48.506740799999996', '32.2670753', '20', '2017-02-16 12:48:27'),
-(453, 1487239496, 'dmitry', '48.506740799999996', '32.2670753', '21', '2017-02-16 12:48:28'),
-(454, 1487239496, 'dmitry', '48.506740799999996', '32.2670753', '22', '2017-02-16 12:48:31'),
-(455, 1487239496, 'dmitry', '48.506740799999996', '32.2670753', '23', '2017-02-16 12:48:33'),
-(456, 1487252427, 'dmitry', '', '', 'hello', '2017-02-16 13:40:43'),
-(457, 1487239496, 'dmitry', '48.5067393', '32.2670642', 'zxczx\\', '2017-02-20 09:52:14'),
-(458, 1487239496, 'dmitry', '48.5067393', '32.2670642', 'zxc', '2017-02-20 09:52:28'),
-(459, 1487239496, 'dmitry', '48.5067393', '32.2670642', 'zxc', '2017-02-20 09:52:51');
+(460, 1487239496, 'dmitry', '48.5067393', '32.2670642', 'hello', '2017-02-20 15:42:41'),
+(461, 1487239496, 'dmitry', '48.5067393', '32.2670642', 'how are you?', '2017-02-20 15:42:49'),
+(462, 1487239496, 'dmitry', '48.5067393', '32.2670642', 'i am fine', '2017-02-20 15:42:55'),
+(463, 1487239496, 'dmitry', '48.5067393', '32.2670642', 'test', '2017-02-20 15:42:58');
 
 -- --------------------------------------------------------
 
@@ -97,15 +78,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `remember_token` varchar(255) DEFAULT NULL
+  `remember_token` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`) VALUES
-(1, 'reflection', 'dmitryparfenov937@gmail.com', '$2y$10$3nO5xewTFGm1cxVWFU0.I.v0XFA77IuBuMPcypnmn2tp8CzGYlj7y', NULL);
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'reflection', 'dmitryparfenov937@gmail.com', '$2y$10$3nO5xewTFGm1cxVWFU0.I.v0XFA77IuBuMPcypnmn2tp8CzGYlj7y', '4PZoYpgpM2WBZjkTtNE4gL070ycn7jud86uFduN4TroVsAswB2JiqmKnPTsf', '2017-02-20 16:02:02', '2017-02-20 16:02:02');
 
 --
 -- Индексы сохранённых таблиц
@@ -137,7 +120,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=460;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=464;
 --
 -- AUTO_INCREMENT для таблицы `settings`
 --

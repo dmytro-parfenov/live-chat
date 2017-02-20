@@ -2,8 +2,31 @@
 
 @section('main')
 
+    <form method="get" action="" class="messages-sort-form col-xs-12">
+        <div class="row">
+            <div class="col-xs-12 col-sm-2">
+                <label>Search</label>
+                <input type="search" name="search_value" value="{{Input::get('search_value')}}" class="form-control" placeholder="Message or user name">
+            </div>
+            <div class="col-xs-12 col-sm-2">
+                <label>Date</label>
+                <input type="date" name="filter_date" value="{{Input::get('filter_date')}}" class="form-control">
+            </div>
+            <div class="col-xs-12 col-sm-2">
+                <label>Order by</label>
+                <select class="form-control order-by-select" name="order_by_value">
+                    <option value="0" @if (Input::get('order_by_value') == 0) selected="" @endif>Newest</option>
+                    <option value="1" @if (Input::get('order_by_value') == 1) selected="" @endif>Oldest</option>
+                </select>
+            </div>
+            <div class="col-xs-12 col-sm-1">
+                <a href="/master/messages" title="Reset filter"><i class="glyphicon glyphicon-repeat reset-filter"></i></a>
+            </div>
+        </div>
+    </form>
+
     @if (count($messages) > 0)
-        <div class="col-xs-12 message-list-header">
+        <div class="col-xs-12 message-list-header hidden-xs">
             <div class="row">
                 <div class="col-xs-12 col-sm-3">User</div>
                 <div class="col-xs-12 col-sm-7">Message</div>
@@ -27,6 +50,9 @@
                 @endforeach
             </div>
         </form>
+        <div class="col-xs-12">
+            <button class="form-control btn-danger delete-all-messages">Delete all</button>
+        </div>
     @else
         <div class="col-xs-12">No messages</div>
     @endif
