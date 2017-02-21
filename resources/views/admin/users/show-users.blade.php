@@ -8,9 +8,11 @@
 
     @include('errors.form-errors')
 
-    <div class="col-xs-12 col-sm-2">
-        <a href="/master/users/add" class="btn-primary form-control">Add user</a>
-    </div>
+    @if ($auth_user->permission === 'admin')
+        <div class="col-xs-12 col-sm-2">
+            <a href="/master/users/add" class="btn-primary form-control">Add user</a>
+        </div>
+    @endif
 
     <div class="col-xs-12 users-list-header hidden-xs">
         <div class="row">
@@ -24,25 +26,25 @@
     <form class="col-xs-12 users-list-form" method="POST" action="/master/users">
         {!! csrf_field() !!}
         @foreach($users as $user)
-            <div class="users-list-form-block">
+            <div class="users-list-form-block @if ($auth_user->email === $user->email) current-user @endif">
                 <div class="row">
                     <div class="col-xs-12 col-sm-3">{{$user->name}}</div>
                     <div class="col-xs-12 col-sm-3"><a href="mailto:{{$user->email}}">{{$user->email}}</a></div>
                     <div class="col-xs-12 col-sm-3">{{$user->permission}}</div>
                     <div class="col-xs-12 col-sm-3">
                         <div class="row">
-                            @if ($user->permission === 'admin')
-                                @if ($auth_user->permission === 'admin' && $auth_user->email === $user->email)
+                            @if ($auth_user->permission === 'admin')
+                                <div class="col-xs-6">
+                                    <a href="/master/users/edit/{{$user->id}}" class="btn btn-success">Edit</a>
+                                </div>
+                            @else
+                                @if ($auth_user->email === $user->email)
                                     <div class="col-xs-6">
                                         <a href="/master/users/edit/{{$user->id}}" class="btn btn-success">Edit</a>
                                     </div>
                                 @endif
-                            @else
-                                <div class="col-xs-6">
-                                    <a href="/master/users/edit/{{$user->id}}" class="btn btn-success">Edit</a>
-                                </div>
                             @endif
-                            @if ($user->permission !== 'admin')
+                            @if ($user->permission !== 'admin' && $auth_user->permission === 'admin')
                                 <div class="col-xs-6">
                                     <input type="checkbox" name="user_check" value="{{$user->id}}" class="user-check">
                                     <button class="btn-danger form-control user-delete">Delete</button>

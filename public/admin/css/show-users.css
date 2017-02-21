@@ -15,6 +15,8 @@
     padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid #dcdcdc; }
+  .users-list-form .current-user {
+    background: rgba(9, 166, 30, 0.1); }
   .users-list-form .user-check {
     visibility: hidden;
     position: absolute; }

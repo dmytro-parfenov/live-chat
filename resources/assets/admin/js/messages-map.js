@@ -14,8 +14,7 @@ function initMap(locations) {
     // The map() method here has nothing to do with the Google Maps API.
     var markers = locations.map(function(location, i) {
         return new google.maps.Marker({
-            position: location,
-            title: 'location name'
+            position: location
         });
     });
 
@@ -33,6 +32,7 @@ $(document).ready(function(){
         success: function (response) {
             if (response.length > 0) {
                 var coords = [];
+                var places = [];
                 for (var i = 0; i < response.length; i++) {
                     coords.push({lat: parseFloat(response[i].user_location_lat), lng: parseFloat(response[i].user_location_lng)});
                 }
