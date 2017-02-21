@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-3">Name</div>
             <div class="col-xs-12 col-sm-3">E-mail</div>
-            <div class="col-xs-12 col-sm-3">Role</div>
+            <div class="col-xs-12 col-sm-3">Permission</div>
             <div class="col-xs-12 col-sm-2">Control</div>
         </div>
     </div>
@@ -28,13 +28,21 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-3">{{$user->name}}</div>
                     <div class="col-xs-12 col-sm-3"><a href="mailto:{{$user->email}}">{{$user->email}}</a></div>
-                    <div class="col-xs-12 col-sm-3">{{$user->role}}</div>
+                    <div class="col-xs-12 col-sm-3">{{$user->permission}}</div>
                     <div class="col-xs-12 col-sm-3">
                         <div class="row">
-                            <div class="col-xs-6">
-                                <a href="/master/users/edit/{{$user->id}}" class="btn btn-success">Edit</a>
-                            </div>
-                            @if ($user->role !== 'admin')
+                            @if ($user->permission === 'admin')
+                                @if ($auth_user->permission === 'admin')
+                                    <div class="col-xs-6">
+                                        <a href="/master/users/edit/{{$user->id}}" class="btn btn-success">Edit</a>
+                                    </div>
+                                @endif
+                            @else
+                                <div class="col-xs-6">
+                                    <a href="/master/users/edit/{{$user->id}}" class="btn btn-success">Edit</a>
+                                </div>
+                            @endif
+                            @if ($user->permission !== 'admin')
                                 <div class="col-xs-6">
                                     <input type="checkbox" name="user_check" value="{{$user->id}}" class="user-check">
                                     <button class="btn-danger form-control user-delete">Delete</button>

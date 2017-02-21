@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Admin\AdminBaseController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AdminUsersController extends AdminBaseController
@@ -16,7 +17,8 @@ class AdminUsersController extends AdminBaseController
     public function getIndex(){
         $title = 'Users';
         $users = User::get();
-        return view('admin.users.show-users', compact(['title', 'users']));
+        $auth_user = Auth::user();
+        return view('admin.users.show-users', compact(['title', 'users','auth_user']));
     }
 
     public function postIndex( Request $request ){
