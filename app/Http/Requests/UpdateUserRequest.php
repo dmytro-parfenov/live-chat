@@ -25,7 +25,7 @@ class UpdateUserRequest extends Request
     {
         return [
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users',
             'password' => 'min:4',
         ];
     }

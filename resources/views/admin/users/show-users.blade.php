@@ -32,7 +32,7 @@
                     <div class="col-xs-12 col-sm-3">
                         <div class="row">
                             @if ($user->permission === 'admin')
-                                @if ($auth_user->permission === 'admin')
+                                @if ($auth_user->permission === 'admin' && $auth_user->email === $user->email)
                                     <div class="col-xs-6">
                                         <a href="/master/users/edit/{{$user->id}}" class="btn btn-success">Edit</a>
                                     </div>
