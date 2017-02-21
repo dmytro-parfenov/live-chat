@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 21 2017 г., 10:15
+-- Время создания: Фев 21 2017 г., 12:53
 -- Версия сервера: 5.5.50
 -- Версия PHP: 5.6.23
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `user_location_lng` varchar(255) NOT NULL,
   `message` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=469 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=473 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `messages`
@@ -48,7 +48,11 @@ INSERT INTO `messages` (`id`, `user_id`, `user_name`, `user_location_lat`, `user
 (465, 1487363359, 'dmitry', '48.50793300000001', '32.262316999999996', 'test 1', '2017-02-20 21:01:26'),
 (466, 1487363359, 'dmitry', '48.50793300000001', '32.262316999999996', 'test 2', '2017-02-20 21:01:31'),
 (467, 1487363359, 'dmitry', '48.50793300000001', '32.262316999999996', 'test 3', '2017-02-20 21:01:35'),
-(468, 1487363359, 'dmitry', '48.50793300000001', '32.262316999999996', 'test 4', '2017-02-20 21:01:37');
+(468, 1487363359, 'dmitry', '48.50793300000001', '32.262316999999996', 'test 4', '2017-02-20 21:01:37'),
+(469, 1487662117, 'loh', '48.5067393', '32.2670642', 'test 5', '2017-02-21 07:28:43'),
+(470, 1487662117, 'loh', '48.5067393', '32.2670642', 'test 6', '2017-02-21 07:28:46'),
+(471, 1487662135, 'parf', '48.5067393', '32.2670642', 'test 7', '2017-02-21 07:29:00'),
+(472, 1487662135, 'parf', '48.5067393', '32.2670641', 'test 8', '2017-02-21 08:10:02');
 
 -- --------------------------------------------------------
 
@@ -86,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `remember_token` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
@@ -126,7 +130,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=469;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=473;
 --
 -- AUTO_INCREMENT для таблицы `settings`
 --
@@ -136,7 +140,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -18,6 +18,7 @@ Route::group(['prefix' => 'master', 'middleware' => 'auth.basic'], function(){
     Route::controllers([
         'settings' 				=> 'Admin\AdminSettingsController',
         'messages' 				=> 'Admin\AdminMessagesController',
+        'messages-map' 			=> 'Admin\AdminMessagesMapController',
         'users'					=> 'Admin\AdminUsersController',
     ]);
 });
