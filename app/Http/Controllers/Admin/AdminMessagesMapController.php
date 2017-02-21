@@ -23,4 +23,15 @@ class AdminMessagesMapController extends AdminBaseController
 
         return view('admin.messages-map', compact(['title', 'coords']));
     }
+
+    public function getCoords(){
+
+        $coords = Messages::select('user_location_lat', 'user_location_lng')
+            ->groupBy('user_location_lat')
+            ->groupBy('user_location_lng')
+            ->get();
+
+
+        return $coords;
+    }
 }

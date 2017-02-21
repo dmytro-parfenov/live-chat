@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 21 2017 г., 12:53
+-- Время создания: Фев 21 2017 г., 16:52
 -- Версия сервера: 5.5.50
 -- Версия PHP: 5.6.23
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `user_location_lng` varchar(255) NOT NULL,
   `message` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=473 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=474 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `messages`
@@ -52,7 +52,8 @@ INSERT INTO `messages` (`id`, `user_id`, `user_name`, `user_location_lat`, `user
 (469, 1487662117, 'loh', '48.5067393', '32.2670642', 'test 5', '2017-02-21 07:28:43'),
 (470, 1487662117, 'loh', '48.5067393', '32.2670642', 'test 6', '2017-02-21 07:28:46'),
 (471, 1487662135, 'parf', '48.5067393', '32.2670642', 'test 7', '2017-02-21 07:29:00'),
-(472, 1487662135, 'parf', '48.5067393', '32.2670641', 'test 8', '2017-02-21 08:10:02');
+(472, 1487662135, 'parf', '48.5067393', '32.2670641', 'test 8', '2017-02-21 08:10:02'),
+(473, 1487662135, 'parf', '48.506758', '32.2670502', 'awdawd', '2017-02-21 11:02:34');
 
 -- --------------------------------------------------------
 
@@ -90,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `remember_token` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
@@ -130,7 +131,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=473;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=474;
 --
 -- AUTO_INCREMENT для таблицы `settings`
 --
@@ -140,7 +141,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
