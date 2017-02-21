@@ -14,6 +14,7 @@ use Input;
 class AdminMessagesController extends AdminBaseController
 {
     public function getIndex(){
+
         $title = 'Messages';
 
         $messages = Messages::select('*');
@@ -22,17 +23,23 @@ class AdminMessagesController extends AdminBaseController
         $search_value = Input::get('search_value');
         $filter_date = Input::get('filter_date');
         $order_by_value = Input::get('order_by_value');
+        $user_value = Input::get('user_value');
 
         //set filters
+        if ($user_value) {
+            $messages = $messages->where(function ($q) use ($user_value) {
+                $q->orWhere('user_name', 'like', '%' . $user_value . '%');
+            });
+        }
+
         if ($search_value) {
-            $messages = Messages::where(function ($q) use ($search_value) {
-                $q->orWhere('user_name', 'like', '%' . $search_value . '%');
+            $messages = $messages->where(function ($q) use ($search_value) {
                 $q->orWhere('message', 'like', '%' . $search_value . '%');
             });
         }
 
         if ($filter_date) {
-            $messages = Messages::where(function ($q) use ($filter_date) {
+            $messages = $messages->where(function ($q) use ($filter_date) {
                 $q->orWhere('created_at', 'like', '%' . $filter_date . '%');
             });
         }
@@ -45,7 +52,11 @@ class AdminMessagesController extends AdminBaseController
 
         $messages = $messages->get();
 
-        return view('admin.messages', compact(['title','messages']));
+        $users_list = Messages::select('user_name')
+            ->groupBy('user_name')
+            ->get();
+
+        return view('admin.messages', compact(['title','messages', 'users_list']));
     }
 
     public function postIndex( Request $request ){

@@ -23,6 +23,11 @@ $(document).ready(function(){
         $('.messages-sort-form').submit();
     });
 
+    //filter users
+    $('.user-select').change(function () {
+        $('.messages-sort-form').submit();
+    });
+
 });
 
 $(window).on('load', function(){
