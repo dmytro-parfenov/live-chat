@@ -56,7 +56,11 @@
                 @foreach($messages as $message)
                     <div class="col-xs-12 message-list-block">
                         <div class="row">
-                            <div class="col-xs-12 col-sm-3">{{$message->user_name}}<span>{{$message->created_at}}</span></div>
+                            <div class="col-xs-12 col-sm-3">{{$message->user_name}}<span>{{$message->created_at}}</span>
+                                @if ($message->user_location_lat && $message->user_location_lng)
+                                    <a href="https://www.google.com.ua/maps/place?q={{$message->user_location_lat}},{{$message->user_location_lng}}" target="_blank">Show location</a>
+                                @endif
+                            </div>
                             <div class="col-xs-12 col-sm-7">{{$message->message}}</div>
                             <div class="col-xs-12 col-sm-2">
                                 <input type="checkbox" name="messages_check[]" value="{{$message->id}}" class="checkbox-message">
