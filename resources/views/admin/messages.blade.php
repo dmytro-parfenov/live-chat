@@ -56,9 +56,9 @@
                 @foreach($messages as $message)
                     <div class="col-xs-12 message-list-block">
                         <div class="row">
-                            <div class="col-xs-12 col-sm-3">{{$message->user_name}}<span>{{$message->created_at}}</span>
+                            <div class="col-xs-12 col-sm-3">{{$message->user_name}}<span class="created">{{$message->created_at}}</span>
                                 @if ($message->user_location_lat && $message->user_location_lng)
-                                    <a href="https://www.google.com.ua/maps/place?q={{$message->user_location_lat}},{{$message->user_location_lng}}" target="_blank">Show location</a>
+                                    <span class="map-marker" data-user-location-lat="{{$message->user_location_lat}}" data-user-location-lng="{{$message->user_location_lng}}">Show location</span>
                                 @endif
                             </div>
                             <div class="col-xs-12 col-sm-7">{{$message->message}}</div>
@@ -74,9 +74,15 @@
         <div class="col-xs-12">
             <button class="form-control btn-danger delete-all-messages">Delete all</button>
         </div>
+
     @else
         <div class="col-xs-12">No messages</div>
     @endif
+
+    <div class="background-map-object"></div>
+    <div id="map-object">
+        <div id="map-object-location"></div>
+    </div>
 
 @endsection
 
@@ -85,5 +91,6 @@
 @endpush
 
 @push('script')
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAIpi0wvFb7yyxMzJZWXYxX3cEQn_byngU"></script>
 <script type="text/javascript" src="/admin/js/messages.min.js"></script>
 @endpush

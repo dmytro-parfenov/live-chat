@@ -1,1 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+
+@mixin opacity ($value){
+    -moz-opacity: $value;
+    -khtml-opacity: $value;
+    opacity: $value;
+}
