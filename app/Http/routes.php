@@ -19,6 +19,7 @@ Route::group(['prefix' => 'master', 'middleware' => 'auth.basic'], function(){
         'settings' 				=> 'Admin\AdminSettingsController',
         'messages' 				=> 'Admin\AdminMessagesController',
         'messages-map' 			=> 'Admin\AdminMessagesMapController',
+        'devices-statistics' 	=> 'Admin\AdminDevicesStatisticsController',
         'users'					=> 'Admin\AdminUsersController',
     ]);
 });

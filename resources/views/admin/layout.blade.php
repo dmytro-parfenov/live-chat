@@ -15,6 +15,7 @@
         <li role="presentation" @if( in_array( Request::segment(2), ['settings'] ) ) class="active" @endif><a href="/master/settings">Settings</a></li>
         <li role="presentation" @if( in_array( Request::segment(2), ['messages'] ) ) class="active" @endif><a href="/master/messages">Messages</a></li>
         <li role="presentation" @if( in_array( Request::segment(2), ['messages-map'] ) ) class="active" @endif><a href="/master/messages-map">Messages map</a></li>
+        <li role="presentation" @if( in_array( Request::segment(2), ['devices-statistics'] ) ) class="active" @endif><a href="/master/devices-statistics">Devices statistics</a></li>
         <li role="presentation" @if( in_array( Request::segment(2), ['users'] ) ) class="active" @endif><a href="/master/users">Master settings</a></li>
         <li role="presentation"><a href="/" title="To site"><i class="glyphicon glyphicon-new-window"></i></a></li>
         <li role="presentation"><a href="/auth/logout" title="Log out"><i class="glyphicon glyphicon-log-out"></i></a></li>
