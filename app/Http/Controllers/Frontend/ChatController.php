@@ -99,18 +99,6 @@ class ChatController extends BaseController{
 
     }
 
-    public function sendLocation(Request $request){
-
-        $user_location_lat = $request->get('user_location_lat');
-        $user_location_lng = $request->get('user_location_lng');
-
-        if ($user_location_lat && $user_location_lng){
-            Cookie::queue('user_location_lat', $user_location_lat);
-            Cookie::queue('user_location_lng', $user_location_lng);
-        }
-
-    }
-
     public function showMoreMessages(Request $request){
 
         $first_message = $request->get('first_message');

@@ -10,6 +10,20 @@ function showPosition(position) {
     });
 }
 
+function sendDeviceInfo(deviceType, deviceOs) {
+    var _token = $('meta[name=csrf-token]').attr('content');
+    $.ajax({
+        type: "POST",
+        url: "/send-device-info",
+        data: { _token: _token,
+            device_type: deviceType,
+            device_os: deviceOs},
+        success: function (data) {
+            console.log(data);
+        }
+    });
+}
+
 $(document).ready(function(){
 
     //load bootstrap
@@ -29,6 +43,26 @@ $(document).ready(function(){
     $('.arrow-down').click(function () {
         $("html, body").animate({ scrollTop: $(document).height() });
     });
+
+    //detect device type and os
+    var deviceType = 'other';
+    if (device.mobile()) {
+        deviceType = 'mobile';
+    } else if (device.tablet()){
+        deviceType = 'tablet';
+    } else if (device.desktop()){
+        deviceType = 'desktop';
+    }
+    var deviceOs = 'other';
+    if (device.ios()) {
+        deviceOs = 'ios';
+    } else if (device.android()){
+        deviceOs = 'android';
+    } else if (device.windows()) {
+        deviceOs = 'windows';
+    }
+
+    sendDeviceInfo(deviceType, deviceOs);
 
 });
 

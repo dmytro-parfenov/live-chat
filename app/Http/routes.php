@@ -28,6 +28,7 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::post('/send-user-name', 'Frontend\ChatController@sendUserName');
 Route::post('/send-message', 'Frontend\ChatController@sendMessage');
 Route::post('/show-more-messages', 'Frontend\ChatController@showMoreMessages');
-Route::post('/send-location', 'Frontend\ChatController@sendLocation');
+Route::post('/send-location', 'Frontend\BaseController@sendLocation');
+Route::post('/send-device-info', 'Frontend\BaseController@sendDeviceInfo');
 
 Route::get('/', 'Frontend\ChatController@index');

@@ -33,6 +33,10 @@
             text-transform: uppercase;
             color: #999999;
             cursor: pointer;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+            -webkit-user-select: none;
             @include transition(0.2);
             &:hover {
                 color: #000000;

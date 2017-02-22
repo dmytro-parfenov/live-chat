@@ -28,6 +28,10 @@
       text-transform: uppercase;
       color: #999999;
       cursor: pointer;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      user-select: none;
+      -webkit-user-select: none;
       -webkit-transition: all 0.2s;
       -moz-transition: all 0.2s;
       -o-transition: all 0.2s;
