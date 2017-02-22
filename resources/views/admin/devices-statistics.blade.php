@@ -6,6 +6,10 @@
         <div id="donutchart-device" class="donutchart"></div>
     </div>
 
+    <div class="col-xs-12">
+        <div id="donutchart-os" class="donutchart"></div>
+    </div>
+
 @endsection
 
 @push('style')

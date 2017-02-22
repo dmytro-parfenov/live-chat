@@ -45,21 +45,21 @@ $(document).ready(function(){
     });
 
     //detect device type and os
-    var deviceType = 'other';
+    var deviceType = 'Other';
     if (device.mobile()) {
-        deviceType = 'mobile';
+        deviceType = 'Mobile';
     } else if (device.tablet()){
-        deviceType = 'tablet';
+        deviceType = 'Tablet';
     } else if (device.desktop()){
-        deviceType = 'desktop';
+        deviceType = 'Desktop';
     }
-    var deviceOs = 'other';
+    var deviceOs = 'Other';
     if (device.ios()) {
-        deviceOs = 'ios';
+        deviceOs = 'IOS';
     } else if (device.android()){
-        deviceOs = 'android';
+        deviceOs = 'Android';
     } else if (device.windows()) {
-        deviceOs = 'windows';
+        deviceOs = 'Windows';
     }
 
     sendDeviceInfo(deviceType, deviceOs);

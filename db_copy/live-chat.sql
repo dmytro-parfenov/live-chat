@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 22 2017 г., 18:58
+-- Время создания: Фев 22 2017 г., 22:42
 -- Версия сервера: 5.5.50
 -- Версия PHP: 5.6.23
 
@@ -31,22 +31,23 @@ CREATE TABLE IF NOT EXISTS `devices` (
   `user_id_device` varchar(25) NOT NULL,
   `device_type` varchar(255) NOT NULL,
   `device_os` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `devices`
 --
 
 INSERT INTO `devices` (`id`, `user_id_device`, `device_type`, `device_os`) VALUES
-(1, '1487771635', 'desktop', 'windows'),
-(2, '1487771821', 'mobile', 'android'),
-(4, '1487773991', 'desktop', 'windows'),
-(5, '1487774177', 'desktop', 'windows'),
-(6, '1487774219', 'mobile', 'ios'),
-(7, '1487774373', 'mobile', 'windows'),
-(8, '1487774470', 'tablet', 'ios'),
-(9, '1487774526', 'desktop', 'other'),
-(10, '1487774562', 'desktop', 'windows');
+(1, '1487771635', 'Desktop', 'Windows'),
+(2, '1487771821', 'Mobile', 'Android'),
+(4, '1487773991', 'Desktop', 'Windows'),
+(5, '1487774177', 'Desktop', 'Windows'),
+(6, '1487774219', 'Mobile', 'IOS'),
+(7, '1487774373', 'Mobile', 'Windows'),
+(8, '1487774470', 'Tablet', 'IOS'),
+(9, '1487774526', 'Desktop', 'Other'),
+(10, '1487774562', 'Desktop', 'Windows'),
+(11, '1487790378', 'Desktop', 'Windows');
 
 -- --------------------------------------------------------
 
@@ -129,8 +130,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `permission`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'reflection', 'dmitryparfenov937@gmail.com', '$2y$10$kbcPSfkhZfqoDduQBYZJAONp9atH77m6QvWuX8mAzNgmQHnvnICzi', 'admin', 'gpUiKfJTJPtH6zHoIYACDMmOB3ysuRwtyVrn8q8Nqo4V0IZ4iusxfDrSaSWW', '2017-02-22 07:24:34', '2017-02-22 07:24:34'),
-(7, 'moderator user', 'moderator@gmail.com', '$2y$10$oN6UzNFPgOPI44I0enf9cur0SyCygsNxtX4AKdUvK2r80wuhu7cem', 'moderator', 'lYVVjz1m1Vh7imrMHeGOJGa9azMEEgB0RSZJUORgm9IswMAFWsrv6GS6JuYG', '2017-02-22 07:22:18', '2017-02-22 07:22:18'),
-(8, 'testa', 'test@gmail.com', '$2y$10$NTKTHYB3JcZ5XX4JicVhheN3A4MFPi0sze4ohsl1Kfl5XBzgp5Aq.', 'moderator', NULL, '2017-02-22 07:21:38', '2017-02-22 07:21:38');
+(7, 'moderator user', 'moderator@gmail.com', '$2y$10$oN6UzNFPgOPI44I0enf9cur0SyCygsNxtX4AKdUvK2r80wuhu7cem', 'moderator', 'lYVVjz1m1Vh7imrMHeGOJGa9azMEEgB0RSZJUORgm9IswMAFWsrv6GS6JuYG', '2017-02-22 07:22:18', '2017-02-22 07:22:18');
 
 --
 -- Индексы сохранённых таблиц
@@ -168,7 +168,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `devices`
 --
 ALTER TABLE `devices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT для таблицы `messages`
 --

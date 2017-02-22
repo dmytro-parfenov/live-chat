@@ -1,23 +1,16 @@
 //functions
-function drawStatistic(name, values) {
+function drawStatistic(name, values, idElement) {
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-            ['Task', 'Hours per Day'],
-            ['Work',     11],
-            ['Eat',      2],
-            ['Commute',  2],
-            ['Watch TV', 2],
-            ['Sleep',    7]
-        ]);
+        var data = google.visualization.arrayToDataTable(values);
 
         var options = {
             title: name,
             pieHole: 0.4
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart-device'));
+        var chart = new google.visualization.PieChart(document.getElementById(idElement));
         chart.draw(data, options);
     }
 }
@@ -29,15 +22,22 @@ $(document).ready(function(){
         url: "/master/devices-statistics/values",
         success: function (response) {
             if (response[0].length > 0) {
-                console.log(response[0]);
+                var devicesType = [['Name', 'Value']];
+                for (i = 0; i < response[0].length; i++){
+                    devicesType.push([response[0][i].device_type, parseInt(response[0][i].count)]);
+                }
+                drawStatistic('Devices type statistics', devicesType, 'donutchart-device');
             }
             if (response[1].length > 0) {
-                console.log(response[1]);
+                var devicesOs = [['Name', 'Value']];
+                for (i = 0; i < response[1].length; i++){
+                    devicesOs.push([response[1][i].device_os, parseInt(response[1][i].count)]);
+                }
+                drawStatistic('Devices OS statistics', devicesOs, 'donutchart-os');
             }
         }
     });
 
-    drawStatistic('Devices statistics');
 
 });
 
