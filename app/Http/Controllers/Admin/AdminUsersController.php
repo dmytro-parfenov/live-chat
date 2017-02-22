@@ -32,9 +32,14 @@ class AdminUsersController extends AdminBaseController
     }
 
     public function getEdit( $id ) {
-        $title = "User edit";
+        $auth_user = Auth::user();
         $post = User::find( $id );
-        return view('admin.users.edit-user', compact(['title', 'post']));
+        if ($auth_user->permission === 'admin' || $auth_user->email === $post->email){
+            $title = "User edit";
+            return view('admin.users.edit-user', compact(['title', 'post']));
+        } else {
+            return redirect('/master/users')->with('error','You do not have permission to edit user '.$post->name);
+        }
     }
 
     public function postEdit( UpdateUserRequest $request, $id ){

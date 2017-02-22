@@ -5,6 +5,9 @@
     @if(Session::has('success'))
         <div class="alert alert-success col-xs-12" role="alert">{{ Session::get('success') }}</div>
     @endif
+    @if(Session::has('error'))
+        <div class="alert alert-danger" role="alert">{{ Session::get('error') }}</div>
+    @endif
 
     @include('errors.form-errors')
 
@@ -26,9 +29,9 @@
     <form class="col-xs-12 users-list-form" method="POST" action="/master/users">
         {!! csrf_field() !!}
         @foreach($users as $user)
-            <div class="users-list-form-block @if ($auth_user->email === $user->email) current-user @endif">
+            <div class="users-list-form-block">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-3">{{$user->name}}</div>
+                    <div class="col-xs-12 col-sm-3">{{$user->name}}@if ($auth_user->email === $user->email)<div class="current-user"></div>@endif</div>
                     <div class="col-xs-12 col-sm-3"><a href="mailto:{{$user->email}}">{{$user->email}}</a></div>
                     <div class="col-xs-12 col-sm-3">{{$user->permission}}</div>
                     <div class="col-xs-12 col-sm-3">

@@ -28,6 +28,7 @@ $(document).ready(function(){
         $('.messages-sort-form').submit();
     });
 
+
 });
 
 $(window).on('load', function(){

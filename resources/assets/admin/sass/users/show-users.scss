@@ -19,7 +19,12 @@
         border-bottom: 1px solid #dcdcdc;
     }
     .current-user {
-        background: rgba(9, 166, 30, 0.1);
+        background: #6799ff;
+        height: 10px;
+        width: 10px;
+        display: inline-block;
+        border-radius: 50px;
+        margin-left: 10px;
     }
     .user-check {
         visibility: hidden;
