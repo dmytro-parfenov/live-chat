@@ -17,6 +17,7 @@ function drawStatistic(name, values, idElement) {
 
 $(document).ready(function(){
 
+    //get data of devices an OS values
     $.ajax({
         type: "GET",
         url: "/master/devices-statistics/values",
