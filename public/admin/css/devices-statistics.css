@@ -1,3 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 .donutchart {
   height: 500px; }
+
+#donutchart-device {
+  display: none; }
+
+#donutchart-os {
+  display: none; }

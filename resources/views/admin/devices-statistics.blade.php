@@ -4,10 +4,12 @@
 
     <div class="col-xs-12">
         <div id="donutchart-device" class="donutchart"></div>
+        <div id="donutchart-device-none"></div>
     </div>
 
     <div class="col-xs-12">
         <div id="donutchart-os" class="donutchart"></div>
+        <div id="donutchart-os-none"></div>
     </div>
 
 @endsection

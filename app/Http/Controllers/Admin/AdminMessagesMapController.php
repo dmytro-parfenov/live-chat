@@ -16,6 +16,8 @@ class AdminMessagesMapController extends AdminBaseController
         $title = 'Messages map';
 
         $coords = Messages::select('user_location_lat', 'user_location_lng')
+            ->where('user_location_lat', '!=', '')
+            ->where('user_location_lng', '!=', '')
             ->groupBy('user_location_lat')
             ->groupBy('user_location_lng')
             ->get();
@@ -27,6 +29,8 @@ class AdminMessagesMapController extends AdminBaseController
     public function getCoords(){
 
         $coords = Messages::select('user_location_lat', 'user_location_lng')
+            ->where('user_location_lat', '!=', '')
+            ->where('user_location_lng', '!=', '')
             ->groupBy('user_location_lat')
             ->groupBy('user_location_lng')
             ->get();

@@ -91,6 +91,6 @@
 @endpush
 
 @push('script')
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAIpi0wvFb7yyxMzJZWXYxX3cEQn_byngU"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAIpi0wvFb7yyxMzJZWXYxX3cEQn_byngU&language=en"></script>
 <script type="text/javascript" src="/admin/js/messages.min.js"></script>
 @endpush

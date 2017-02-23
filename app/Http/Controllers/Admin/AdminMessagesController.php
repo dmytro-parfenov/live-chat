@@ -54,6 +54,7 @@ class AdminMessagesController extends AdminBaseController
 
         $users_list = Messages::select('user_name')
             ->groupBy('user_name')
+            ->orderBy('user_name', 'ASC')
             ->get();
 
         return view('admin.messages', compact(['title','messages', 'users_list']));

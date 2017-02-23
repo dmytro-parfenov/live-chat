@@ -26,14 +26,20 @@ $(document).ready(function(){
                 for (i = 0; i < response[0].length; i++){
                     devicesType.push([response[0][i].device_type, parseInt(response[0][i].count)]);
                 }
+                $('#donutchart-device').fadeIn(500);
                 drawStatistic('Devices type statistics', devicesType, 'donutchart-device');
+            } else {
+                $('#donutchart-device-none').text('No devices types');
             }
             if (response[1].length > 0) {
                 var devicesOs = [['Name', 'Value']];
                 for (i = 0; i < response[1].length; i++){
                     devicesOs.push([response[1][i].device_os, parseInt(response[1][i].count)]);
                 }
+                $('#donutchart-os').fadeIn(500);
                 drawStatistic('Devices OS statistics', devicesOs, 'donutchart-os');
+            } else {
+                $('#donutchart-os-none').text('No devices OS');
             }
         }
     });

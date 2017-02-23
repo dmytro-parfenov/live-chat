@@ -31,7 +31,7 @@
         @foreach($users as $user)
             <div class="users-list-form-block">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-3">{{$user->name}}@if ($auth_user->email === $user->email)<div class="current-user"></div>@endif</div>
+                    <div class="col-xs-12 col-sm-3">{{$user->name}}@if ($auth_user->id === $user->id)<div class="current-user"></div>@endif</div>
                     <div class="col-xs-12 col-sm-3"><a href="mailto:{{$user->email}}">{{$user->email}}</a></div>
                     <div class="col-xs-12 col-sm-3">{{$user->permission}}</div>
                     <div class="col-xs-12 col-sm-3">
@@ -41,7 +41,7 @@
                                     <a href="/master/users/edit/{{$user->id}}" class="btn btn-success">Edit</a>
                                 </div>
                             @else
-                                @if ($auth_user->email === $user->email)
+                                @if ($auth_user->id === $user->id)
                                     <div class="col-xs-6">
                                         <a href="/master/users/edit/{{$user->id}}" class="btn btn-success">Edit</a>
                                     </div>

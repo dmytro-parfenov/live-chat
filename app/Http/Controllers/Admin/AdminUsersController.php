@@ -34,7 +34,7 @@ class AdminUsersController extends AdminBaseController
     public function getEdit( $id ) {
         $auth_user = Auth::user();
         $post = User::find( $id );
-        if ($auth_user->permission === 'admin' || $auth_user->email === $post->email){
+        if ($auth_user->permission === 'admin' || $auth_user->id === $post->id){
             $title = "User edit";
             return view('admin.users.edit-user', compact(['title', 'post']));
         } else {
