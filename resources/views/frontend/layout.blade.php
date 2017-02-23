@@ -16,8 +16,7 @@
     <div class="header">
         <div class="content-container">
             <div class="row">
-                {{--TODO make users online counter--}}
-                <div class="site-name col-xs-6"><a href="/">{{$settings->site_name}}</a>{{--<div class="users-online-counter" data-toggle="tooltip" data-placement="bottom" title="Users online">1</div>--}}</div>
+                <div class="site-name col-xs-6"><a href="/">{{$settings->site_name}}</a><div class="users-online-counter" id="users-online-counter" data-toggle="tooltip" data-placement="bottom" title="Users online">0</div></div>
                 @if (!empty($user_name) && !empty($user_id))
                     <div class="user-name col-xs-6"><span>{{$user_name}}</span></div>
                 @endif
@@ -56,6 +55,7 @@
     <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/bower_components/device.js/lib/device.min.js"></script>
+    <script type="text/javascript" src="/bower_components/online-visitors-counter-master/ovc/counter.js"></script>
     <script type="text/javascript" src="/frontend/js/layout.min.js"></script>
     @stack('script')
 
