@@ -57,9 +57,14 @@ class AdminUsersController extends AdminBaseController
     }
 
     public function getAdd() {
-        $post = new User;
-        $title = "User add";
-        return view('admin.users.edit-user', compact(['title', 'post']));
+        $auth_user = Auth::user();
+        if ($auth_user->permission === 'admin'){
+            $post = new User;
+            $title = "User add";
+            return view('admin.users.edit-user', compact(['title', 'post']));
+        } else {
+            return redirect('/master/users')->with('error','You do not have permission to add new user');
+        }
     }
 
 
