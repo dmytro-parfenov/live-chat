@@ -35,6 +35,7 @@ function sendNotification(title, options) {
     } else if (Notification.permission !== 'denied') {
         Notification.requestPermission(function (permission) {
             if (permission === "granted") {
+                // send notification
                 var notification = new Notification(title, options);
                 notification.onclick = clickFunc;
             }
@@ -224,7 +225,8 @@ $(window).on('load', function(){
             sendNotification(data.user_name, {
                 body: data.message,
                 icon: 'favicon.ico',
-                dir: 'auto'
+                dir: 'auto',
+                silent: true
             });
         }
 
@@ -237,7 +239,8 @@ $(window).on('load', function(){
         sendNotification('New user connected', {
             body: data,
             icon: 'favicon.ico',
-            dir: 'auto'
+            dir: 'auto',
+            silent: true
         });
     });
 
