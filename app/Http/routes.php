@@ -20,7 +20,7 @@ Route::group(['prefix' => 'master', 'middleware' => 'auth.basic'], function(){
         'messages' 				=> 'Admin\AdminMessagesController',
         'messages-map' 			=> 'Admin\AdminMessagesMapController',
         'devices-statistics' 	=> 'Admin\AdminDevicesStatisticsController',
-        'users'					=> 'Admin\AdminUsersController',
+        'users'					=> 'Admin\AdminUsersController'
     ]);
 });
 

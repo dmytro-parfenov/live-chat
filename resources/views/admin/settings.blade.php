@@ -18,6 +18,8 @@
         <input class="form-control" type="text" name="meta_keywords" value="{{$settings->meta_keywords}}" required>
         <label>Meta description</label>
         <input class="form-control" type="text" name="meta_description" value="{{$settings->meta_description}}" required>
+        <label>About project</label>
+        <textarea class="form-control tinymce" name="about">{!!$settings->about!!}</textarea>
         <input type="submit" class="form-control btn-success" value="Save">
     </form>
 
@@ -28,5 +30,6 @@
 @endpush
 
 @push('script')
+<script type="text/javascript" src="/bower_components/tinymce/js/tinymce/tinymce.min.js"></script>
 <script type="text/javascript" src="/admin/js/settings.min.js"></script>
 @endpush

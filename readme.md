@@ -10,6 +10,7 @@
         bower_components/   bower components
         admin/              compiled scripts, compiled styles for admin
         frontend/           compiled scripts, compiled styles, fonts, images, sounds for frontend
+        uploads/            uploaded files from admin
         bower.json          list of bower components
         .htaccess           htaccess setings
         robots.txt          robots config

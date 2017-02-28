@@ -61,7 +61,7 @@
                                     <span class="map-marker" data-user-location-lat="{{$message->user_location_lat}}" data-user-location-lng="{{$message->user_location_lng}}">Show location</span>
                                 @endif
                             </div>
-                            <div class="col-xs-12 col-sm-7">{{$message->message}}</div>
+                            <div class="col-xs-12 col-sm-7">{!! nl2br($message->message) !!}</div>
                             <div class="col-xs-12 col-sm-2">
                                 <input type="checkbox" name="messages_check[]" value="{{$message->id}}" class="checkbox-message">
                                 <button class="form-control btn-default delete-message">Delete</button>

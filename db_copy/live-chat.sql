@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 23 2017 г., 12:54
+-- Время создания: Фев 28 2017 г., 15:47
 -- Версия сервера: 5.5.50
 -- Версия PHP: 5.6.23
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `devices` (
   `user_id_device` varchar(25) NOT NULL,
   `device_type` varchar(255) NOT NULL,
   `device_os` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `devices`
@@ -46,7 +46,13 @@ INSERT INTO `devices` (`id`, `user_id_device`, `device_type`, `device_os`) VALUE
 (7, '1487774373', 'mobile', 'windows'),
 (8, '1487774470', 'tablet', 'ios'),
 (9, '1487774526', 'desktop', 'other'),
-(10, '1487774562', 'desktop', 'windows');
+(10, '1487774562', 'desktop', 'windows'),
+(11, '1487845149', 'Desktop', 'Windows'),
+(12, '1487845936', 'Desktop', 'Windows'),
+(13, '1488179017', 'Desktop', 'Windows'),
+(14, '1488201586', 'Desktop', 'Windows'),
+(15, '1488202129', 'Desktop', 'Windows'),
+(16, '1488202859', 'Desktop', 'Windows');
 
 -- --------------------------------------------------------
 
@@ -62,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `user_location_lng` varchar(255) NOT NULL,
   `message` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=482 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=659 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `messages`
@@ -89,7 +95,31 @@ INSERT INTO `messages` (`id`, `user_id`, `user_name`, `user_location_lat`, `user
 (478, 1487840766, 'Xao', '48.506806999999995', '32.2669916', 'hi', '2017-02-23 09:39:38'),
 (479, 1487843092, 'dave', '48.506806999999995', '32.2669916', 'test 10', '2017-02-23 09:44:59'),
 (480, 1487843092, 'dave', '48.506806999999995', '32.2669916', 'test 11', '2017-02-23 09:45:03'),
-(481, 1487843092, 'dave', '48.506806999999995', '32.2669916', 'test 12', '2017-02-23 09:45:11');
+(481, 1487843092, 'dave', '48.506806999999995', '32.2669916', 'test 12', '2017-02-23 09:45:11'),
+(482, 1487843092, 'dave', '48.506845299999995', '32.266976299999996', 'awdaw', '2017-02-23 10:51:46'),
+(483, 1487843092, 'dave', '48.506845299999995', '32.266976299999996', 'asda', '2017-02-23 10:51:54'),
+(484, 1487843092, 'dave', '48.506845299999995', '32.266976299999996', 'awdawd', '2017-02-23 10:53:05'),
+(485, 1487843092, 'dave', '48.506845299999995', '32.266976299999996', 'awdawd', '2017-02-23 10:57:29'),
+(486, 1487843092, 'dave', '48.5067777', '32.266998799999996', 'xzc', '2017-02-24 14:11:10'),
+(487, 1487843092, 'dave', '48.5067777', '32.266998799999996', 'we', '2017-02-24 14:11:12'),
+(488, 1487843092, 'dave', '48.5067777', '32.266998799999996', 'cv', '2017-02-24 14:11:14'),
+(489, 1487843092, 'dave', '48.5067777', '32.266998799999996', 'fg', '2017-02-24 14:11:16'),
+(490, 1487843092, 'dave', '48.5067777', '32.266998799999996', 'fg', '2017-02-24 14:11:18'),
+(491, 1487843092, 'dave', '48.5067777', '32.266998799999996', 'we', '2017-02-24 14:11:19'),
+(492, 1487843092, 'dave', '48.5067777', '32.266998799999996', 'rwer', '2017-02-24 14:11:21'),
+(493, 1487843092, 'dave', '48.5067777', '32.266998799999996', 'fdg', '2017-02-24 14:11:22'),
+(494, 1487843092, 'dave', '48.5067777', '32.266998799999996', 'vcb', '2017-02-24 14:11:24'),
+(620, 1488183012, 'xc', '48.5067715', '32.2670446', 'zxc', '2017-02-27 13:53:28'),
+(621, 1488183012, 'xc', '48.5067715', '32.2670446', 'asd', '2017-02-27 13:53:30'),
+(622, 1488183012, 'xc', '48.5067715', '32.2670446', 'we', '2017-02-27 13:53:32'),
+(623, 1488183012, 'xc', '48.5068273', '32.2669742', 'c', '2017-02-27 13:55:02'),
+(624, 1488183012, 'xc', '48.5068273', '32.2669742', 'sd', '2017-02-27 13:55:10'),
+(625, 1488183012, 'xc', '48.5068273', '32.2669742', 'de', '2017-02-27 13:55:23'),
+(626, 1488183012, 'xc', '48.5068273', '32.2669742', 'xc', '2017-02-27 13:55:31'),
+(627, 1488183012, 'xc', '48.5068273', '32.2669742', 'w', '2017-02-27 13:55:57'),
+(628, 1488183012, 'xc', '48.5068273', '32.2669742', '123', '2017-02-27 13:56:10'),
+(629, 1488183012, 'xc', '48.5068273', '32.2669742', 'xc', '2017-02-27 14:01:27'),
+(658, 1488204109, 'mark', '48.5067539', '32.2670328', 'hello!\nmy name is', '2017-02-28 08:51:29');
 
 -- --------------------------------------------------------
 
@@ -102,15 +132,16 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `site_name` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `meta_keywords` varchar(255) NOT NULL,
-  `meta_description` varchar(255) NOT NULL
+  `meta_description` varchar(255) NOT NULL,
+  `about` text NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `settings`
 --
 
-INSERT INTO `settings` (`id`, `site_name`, `title`, `meta_keywords`, `meta_description`) VALUES
-(1, 'Live chat', 'Live chat', 'live, chat', 'Live chat');
+INSERT INTO `settings` (`id`, `site_name`, `title`, `meta_keywords`, `meta_description`, `about`) VALUES
+(1, 'Live chat', 'Live chat', 'live, chat', 'Live chat', '<p><img style="display: block; margin-left: auto; margin-right: auto;" src="../public/uploads/tinymce/source/Paper%20Plane.png" alt="site logo" width="200" height="200" /></p>');
 
 -- --------------------------------------------------------
 
@@ -127,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `remember_token` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
@@ -173,12 +204,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `devices`
 --
 ALTER TABLE `devices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=482;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=659;
 --
 -- AUTO_INCREMENT для таблицы `settings`
 --
@@ -188,7 +219,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
