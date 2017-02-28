@@ -140,7 +140,7 @@ body {
   -webkit-box-shadow: 0px -2px 5px 0px #999999;
   -moz-box-shadow: 0px -2px 5px 0px #999999;
   box-shadow: 0px -2px 5px 0px #999999; }
-  .send-message-container input[type=text] {
+  .send-message-container textarea {
     font-size: 14px;
     color: #ffffff;
     width: 100%;
@@ -149,7 +149,10 @@ body {
     padding-bottom: 10px;
     border: 0;
     background: transparent;
-    border-bottom: 1px solid #ffffff; }
+    border-bottom: 1px solid #ffffff;
+    overflow-y: hidden;
+    height: 60px;
+    resize: none; }
   .send-message-container ::-webkit-input-placeholder {
     color: #ffffff; }
   .send-message-container ::-moz-placeholder {

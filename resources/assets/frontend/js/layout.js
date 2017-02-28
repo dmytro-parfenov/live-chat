@@ -17,10 +17,7 @@ function sendDeviceInfo(deviceType, deviceOs) {
         url: "/send-device-info",
         data: { _token: _token,
             device_type: deviceType,
-            device_os: deviceOs},
-        success: function (data) {
-            console.log(data);
-        }
+            device_os: deviceOs}
     });
 }
 

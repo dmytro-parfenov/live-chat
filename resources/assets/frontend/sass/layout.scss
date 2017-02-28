@@ -143,7 +143,7 @@ body {
     bottom: 0;
     z-index: 100;
     @include shadowOutline(0px, -2px, 5px, 0px, rgba(153,153,153,1));
-    input[type=text] {
+    textarea {
         font-size: 14px;
         color: #ffffff;
         width: 100%;
@@ -153,6 +153,9 @@ body {
         border: 0;
         background: transparent;
         border-bottom: 1px solid #ffffff;
+        overflow-y: hidden;
+        height: 60px;
+        resize: none;
     }
     ::-webkit-input-placeholder {color:#ffffff;}
     ::-moz-placeholder          {color:#ffffff;}

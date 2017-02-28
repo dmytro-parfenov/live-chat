@@ -43,7 +43,7 @@
         <div class="content-container">
             <div class="row">
                 <div class="col-xs-9 col-sm-10 col-md-11">
-                    <input type="text" placeholder="Enter your message" name="message" autocomplete="off">
+                    <textarea placeholder="Enter your message" name="message"></textarea>
                 </div>
                 <div class="col-xs-3 col-sm-2 col-md-1 send-message-button">
                     <button class="glyphicon glyphicon-ok"></button>

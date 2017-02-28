@@ -1,6 +1,6 @@
 // functions
 function sendMessage() {
-    var message = $('.send-message-container input').val();
+    var message = $('.send-message-container textarea').val();
     var _token = $('meta[name=csrf-token]').attr('content');
     if (message.length > 0 ) {
         $.ajax({
@@ -9,7 +9,7 @@ function sendMessage() {
             data: { _token: _token,
                 message: message},
             success: function(){
-                $('.send-message-container input').val('');
+                $('.send-message-container textarea').val('');
             }
         });
     }
@@ -73,7 +73,7 @@ function windowScroll(height) {
                 }
                 if (showMessageContainer) {
                     $('.send-message-container').stop();
-                    $('.send-message-container').animate({'bottom': '-70px'}, 500);
+                    $('.send-message-container').animate({'bottom': '-80px'}, 500);
                     showMessageContainer = false;
                 }
             }
@@ -87,8 +87,8 @@ $(document).ready(function(){
     windowScroll($(document).height());
 
     //send message
-    $('.send-message-container input').keyup(function (event) {
-        if (event.keyCode === 13){
+    $('.send-message-container textarea').keyup(function (event) {
+        if (event.ctrlKey && event.keyCode === 13){
             sendMessage();
         }
     });

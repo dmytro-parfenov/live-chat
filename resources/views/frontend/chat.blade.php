@@ -21,7 +21,7 @@
                         @endif
                         <div class="time">{{$message->created_at}}</div>
                     </div>
-                    <div class="message-block-bottom">{{$message->message}}</div>
+                    <div class="message-block-bottom">{!! nl2br($message->message) !!}</div>
                 </div>
             @endforeach
         @else
