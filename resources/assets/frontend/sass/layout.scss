@@ -20,6 +20,9 @@ body {
     video {
         max-width: 100% !important;
     }
+    table {
+        overflow-x: auto;
+    }
 }
 
 .header {

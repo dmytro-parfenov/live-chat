@@ -15,6 +15,8 @@ body {
     max-width: 100% !important; }
   .content-text-page video {
     max-width: 100% !important; }
+  .content-text-page table {
+    overflow-x: auto; }
 
 .header {
   background: #63B8FF;
