@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 28 2017 г., 15:47
+-- Время создания: Мар 01 2017 г., 12:10
 -- Версия сервера: 5.5.50
 -- Версия PHP: 5.6.23
 
@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
 --
 
 INSERT INTO `settings` (`id`, `site_name`, `title`, `meta_keywords`, `meta_description`, `about`) VALUES
-(1, 'Live chat', 'Live chat', 'live, chat', 'Live chat', '<p><img style="display: block; margin-left: auto; margin-right: auto;" src="../public/uploads/tinymce/source/Paper%20Plane.png" alt="site logo" width="200" height="200" /></p>');
+(1, 'Live chat', 'Live chat', 'live, chat', 'Live chat', '<p style="text-align: center;"><a title="Live-chat" href="../public/uploads/tinymce/source/doc/Live-chat.docx">Live-chat</a></p>\r\n<p style="text-align: center;">&nbsp;</p>\r\n<p style="text-align: center;"><img src="../public/uploads/tinymce/source/image/Paper%20Plane.png?1488357555015" alt="Paper Plane" /></p>\r\n<p style="text-align: center;">&nbsp;</p>\r\n<p style="text-align: center;">Based on Laravel framework</p>\r\n<p style="text-align: center;">&nbsp;</p>\r\n<p style="text-align: center;"><video src="../public/uploads/tinymce/source/media/What%20is%20Laravel%20Framework.mp4" controls="controls" width="300" height="150">What is Laravel Framework</video></p>\r\n<p style="text-align: center;">Dmitry Parfenov</p>\r\n<p style="text-align: center;"><a href="mailto:dmitryparfenov937@gmail.com">dmitryparfenov937@gmail.com</a></p>');
 
 -- --------------------------------------------------------
 

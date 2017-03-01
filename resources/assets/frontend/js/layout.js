@@ -41,6 +41,16 @@ $(document).ready(function(){
         $("html, body").animate({ scrollTop: $(document).height() });
     });
 
+    //show or hide about project info
+    $('.tool-pannel .about').click(function () {
+        $('.background-about-container').fadeIn(500);
+        $('.about-container').slideDown(500);
+    });
+    $('.background-about-container').click(function () {
+        $('.background-about-container').fadeOut(500);
+        $('.about-container').slideUp(500);
+    });
+
     //detect device type and os
     var deviceType = 'Other';
     if (device.mobile()) {

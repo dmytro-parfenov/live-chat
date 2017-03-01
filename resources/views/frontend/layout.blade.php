@@ -35,6 +35,9 @@
         <div class="search glyphicon glyphicon-search"></div>
         <div class="arrow-up glyphicon glyphicon-arrow-up"></div>
         <div class="arrow-down glyphicon glyphicon-arrow-down"></div>
+        @if ($settings->about !== '')
+            <div class="about glyphicon glyphicon-info-sign"></div>
+        @endif
     </div>
 
     @yield('main')
@@ -51,6 +54,13 @@
             </div>
         </div>
     </div>
+
+    @if ($settings->about !== '')
+        <div class="background-about-container"></div>
+        <div class="about-container">
+            <div class="content-text-page">{!! $settings->about !!}</div>
+        </div>
+    @endif
 
     <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

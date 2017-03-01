@@ -11,6 +11,16 @@ body {
     padding-right: 15px;
 }
 
+.content-text-page {
+    font-size: 14px;
+    img {
+        max-width: 100% !important;
+    }
+    video {
+        max-width: 100% !important;
+    }
+}
+
 .header {
     background:  #63B8FF;
     padding-top: 15px;
@@ -131,6 +141,9 @@ body {
     .arrow-up {
         @extend .search;
     }
+    .about {
+        @extend .search;
+    }
 }
 
 .send-message-container {
@@ -184,4 +197,27 @@ body {
 
 .send-message-container-active {
     display: block;
+}
+
+.background-about-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #000000;
+    @include opacity(0.8);
+    z-index: 300;
+    display: none;
+}
+.about-container {
+    position: fixed;
+    padding: 15px;
+    width: 80%;
+    background: #ffffff;
+    top: 0;
+    left: 10%;
+    overflow-y: auto;
+    z-index: 400;
+    display: none;
 }

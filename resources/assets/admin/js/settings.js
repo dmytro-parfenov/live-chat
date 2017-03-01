@@ -1,18 +1,22 @@
 $(document).ready(function(){
 
     tinymce.init({
-        selector: '.tinymce',
-        height: 300,
+        selector: ".tinymce",
+        // height: 300,
         menubar: true,
         plugins: [
-            'advlist autolink lists link image charmap print preview anchor',
-            'searchreplace visualblocks code fullscreen',
-            'insertdatetime media table contextmenu paste code responsivefilemanager'
+            "advlist autolink link image lists charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
+            "table contextmenu directionality emoticons paste textcolor responsivefilemanager code autoresize"
         ],
-        toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code',
-        filemanager_crossdomain: true,
+        toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
+        toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
+        image_advtab: true ,
+
         external_filemanager_path:"/bower_components/tinymce/js/tinymce/filemanager/",
+        filemanager_title:"Responsive Filemanager" ,
         external_plugins: { "filemanager" : "/bower_components/tinymce/js/tinymce/filemanager/plugin.min.js"}
+
     });
 
 });
