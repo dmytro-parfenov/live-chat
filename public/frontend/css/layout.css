@@ -9,7 +9,8 @@ body {
   padding-right: 15px; }
 
 .content-text-page {
-  font-size: 14px; }
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif; }
   .content-text-page img {
     max-width: 100% !important; }
   .content-text-page video {
