@@ -57,6 +57,13 @@ class AdminMessagesController extends AdminBaseController
             ->orderBy('user_name', 'ASC')
             ->get();
 
+        //add <a> tag for links in message
+        if (count($messages) > 0) {
+            foreach ($messages as $message) {
+                $message->message = Messages::autolink($message->message);
+            }
+        }
+
         return view('admin.messages', compact(['title','messages', 'users_list']));
     }
 

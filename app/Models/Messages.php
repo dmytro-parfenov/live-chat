@@ -16,4 +16,15 @@ class Messages extends Model
 
     }
 
+    //all <a> tag for all links in message
+    public static function autolink($text) {
+        $reg_exUrl = "/((http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?)/";
+        if(preg_match($reg_exUrl, $text)) {
+            return preg_replace($reg_exUrl, '<a href="${1}" target="_blank">${1}</a> ', $text);
+        } else {
+            return $text;
+        }
+    }
+
+
 }

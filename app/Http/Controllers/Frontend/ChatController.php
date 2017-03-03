@@ -35,6 +35,13 @@ class ChatController extends BaseController{
             $messages = $messages->latest()->take(20)->get()->reverse();
         }
 
+        //add <a> tag for links in message
+        if (count($messages) > 0) {
+            foreach ($messages as $message) {
+                $message->message = Messages::autolink($message->message);
+            }
+        }
+
         return view('frontend.chat', compact(['messages', 'user_name', 'user_id']));
     }
 
@@ -90,6 +97,11 @@ class ChatController extends BaseController{
                 $options
             );
 
+            $message->push = $message->message;
+
+            //add <a> tag for links in message
+            $message->message = Messages::autolink($message->message);
+
             $html = view('frontend.includes.message', compact(['message']))->render();
             $message->html = $html;
 
@@ -106,6 +118,10 @@ class ChatController extends BaseController{
             $messages = Messages::where('id','<',$first_message);
             $messages = $messages->latest()->take(20)->get()->reverse();
             if (count($messages) > 0) {
+                //add <a> tag for links in message
+                foreach ($messages as $message) {
+                    $message->message = Messages::autolink($message->message);
+                }
                 $html = view('frontend.includes.message', compact(['messages']))->render();
                 $data = json_encode(['html' => $html,'first_message' => $messages->first()->id]);
                 return $data;

@@ -180,6 +180,7 @@ $(document).ready(function(){
             data: {_token: _token,
                 first_message: first_message},
             success: function (response) {
+                console.log(response);
                 $('.message-block').first().before(response.html);
                 $('.message-block').hide();
                 $('.message-block').fadeIn(500);
@@ -223,7 +224,7 @@ $(window).on('load', function(){
         if (document.hidden) {
             soundNotification('frontend/sounds/get-message.wav');
             sendNotification(data.user_name, {
-                body: data.message,
+                body: data.push,
                 icon: 'favicon.ico',
                 dir: 'auto',
                 silent: true

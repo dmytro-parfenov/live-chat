@@ -8,7 +8,7 @@
                 @endif
                 <div class="time">{{$mes->created_at}}</div>
             </div>
-            <div class="message-block-bottom">{!! nl2br($message->message) !!}</div>
+            <div class="message-block-bottom">{!! nl2br($mes->message) !!}</div>
         </div>
     @endforeach
 @elseif (isset($message))
