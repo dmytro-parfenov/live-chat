@@ -26,5 +26,4 @@ class Messages extends Model
         }
     }
 
-
 }
