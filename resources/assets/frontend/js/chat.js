@@ -180,7 +180,6 @@ $(document).ready(function(){
             data: {_token: _token,
                 first_message: first_message},
             success: function (response) {
-                console.log(response);
                 $('.message-block').first().before(response.html);
                 $('.message-block').hide();
                 $('.message-block').fadeIn(500);
