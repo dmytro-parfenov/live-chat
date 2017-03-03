@@ -1,0 +1,1 @@
+<div class="preview-link-container">@if ($link_item->title !== '' && $link_item->image !== '')<a href="{{$link_item->url}}" target="_blank"><div><span>{{$link_item->title}}</span><img src="{{$link_item->image}}" alt="link-image"></div></a>@else<a href="{{$link_item->url}}" target="_blank">{{$link_item->url}}</a>@endif</div>

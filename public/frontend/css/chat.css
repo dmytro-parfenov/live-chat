@@ -76,6 +76,37 @@
   .messages-container .message-block-bottom {
     font-size: 14px;
     color: #000000; }
+    .messages-container .message-block-bottom .preview-link-container {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 10px; }
+      .messages-container .message-block-bottom .preview-link-container div {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        display: inline-block;
+        width: 200px;
+        padding: 10px;
+        -webkit-box-shadow: 0px 0px 4px 0px #999999;
+        -moz-box-shadow: 0px 0px 4px 0px #999999;
+        box-shadow: 0px 0px 4px 0px #999999; }
+        .messages-container .message-block-bottom .preview-link-container div span {
+          display: block;
+          font-size: 14px;
+          color: #333333;
+          margin-bottom: 5px; }
+        .messages-container .message-block-bottom .preview-link-container div img {
+          max-width: 100%;
+          -webkit-transition: all 0.2s;
+          -moz-transition: all 0.2s;
+          -o-transition: all 0.2s;
+          transition: all 0.2s; }
+        .messages-container .message-block-bottom .preview-link-container div:hover {
+          background: rgba(220, 220, 220, 0.13); }
+          .messages-container .message-block-bottom .preview-link-container div:hover img {
+            -webkit-transform: scale(0.97);
+            -moz-transform: scale(0.97);
+            -o-transform: scale(0.97);
+            transform: scale(0.97); }
 
 .background-map-object {
   position: fixed;

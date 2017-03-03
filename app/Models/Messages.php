@@ -16,14 +16,22 @@ class Messages extends Model
 
     }
 
-    //all <a> tag for all links in message
-    public static function autolink($text) {
+    //replace link to preview container
+    public static function findLink($text) {
         $reg_exUrl = "/((http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?)/";
         if(preg_match($reg_exUrl, $text)) {
-            return preg_replace($reg_exUrl, '<a href="${1}" target="_blank">${1}</a> ', $text);
-        } else {
-            return $text;
+            preg_match_all($reg_exUrl, $text, $matches);
+            $link_items = array();
+            foreach ($matches[1] as $match){
+                $link_item = file_get_contents('http://api.linkpreview.net/?key=58b96fd7125876b6205366b32c13ea20b33fad32f992e&q='.$match);
+                $link_item = json_decode($link_item);
+                $link_items[] = view('frontend.includes.preview-link', compact(['link_item']))->render();
+            }
+            foreach ($matches[1] as $key => $mat) {
+                $text = str_replace($mat, $link_items[$key], $text);
+            }
         }
+        return $text;
     }
 
 }

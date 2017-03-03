@@ -80,6 +80,35 @@
     .message-block-bottom {
         font-size: 14px;
         color: #000000;
+        .preview-link-container {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            div {
+                padding-top: 10px;
+                padding-bottom: 10px;
+                display: inline-block;
+                width: 200px;
+                padding: 10px;
+                @include shadowOutline(0px, 0px, 4px, 0px, rgba(153,153,153,1));
+                span {
+                    display: block;
+                    font-size: 14px;
+                    color: #333333;
+                    margin-bottom: 5px;
+                }
+                img {
+                    max-width: 100%;
+                    @include transition(0.2);
+                }
+                &:hover {
+                    background: rgba(220, 220, 220, 0.13);
+                    img {
+                        @include scale(0.97);
+                    }
+                }
+            }
+        }
     }
 }
 

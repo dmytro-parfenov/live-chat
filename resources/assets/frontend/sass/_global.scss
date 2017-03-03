@@ -18,3 +18,10 @@
     -o-transition: all $value+s;
     transition: all $value+s;
 }
+
+@mixin scale($value){
+    -webkit-transform: scale($value);
+    -moz-transform: scale($value);
+    -o-transform: scale($value);
+    transform: scale($value);
+}
